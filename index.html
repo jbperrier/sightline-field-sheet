@@ -1,0 +1,329 @@
+<title>Sightline Field Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --paper:#f2f4f5;
+    --paper-line:#c7d2d8;
+    --ink:#132635;
+    --ink-soft:#3d5164;
+    --blue:#1f5fa8;
+    --blue-deep:#123a66;
+    --blue-tint:#e4edf6;
+    --good:#3f6b4a;
+    --good-tint:#e7efe8;
+    --warn:#8a5a20;
+    --warn-tint:#f5ecdc;
+    --redline:#a13a2f;
+    --redline-tint:#f7e9e6;
+    --card:#ffffff;
+    --shadow: 0 1px 2px rgba(19,38,53,.06), 0 6px 20px rgba(19,38,53,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#101820;
+      --paper-line:#28353f;
+      --ink:#e7edf1;
+      --ink-soft:#a9bac6;
+      --blue:#5b9bdb;
+      --blue-deep:#8fc0ee;
+      --blue-tint:#152838;
+      --good:#8fc79b;
+      --good-tint:#132a1c;
+      --warn:#d9ab6b;
+      --warn-tint:#2b2213;
+      --redline:#e29088;
+      --redline-tint:#2c1815;
+      --card:#17212a;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101820;
+    --paper-line:#28353f;
+    --ink:#e7edf1;
+    --ink-soft:#a9bac6;
+    --blue:#5b9bdb;
+    --blue-deep:#8fc0ee;
+    --blue-tint:#152838;
+    --good:#8fc79b;
+    --good-tint:#132a1c;
+    --warn:#d9ab6b;
+    --warn-tint:#2b2213;
+    --redline:#e29088;
+    --redline-tint:#2c1815;
+    --card:#17212a;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-attachment: local;
+  }
+  .wrap{ max-width:980px; margin:0 auto; padding-inline:20px; padding-block:28px 60px; }
+
+  /* title block, drafting-plate style */
+  .titleblock{
+    background:var(--card); border:1.5px solid var(--ink); box-shadow:var(--shadow);
+    display:grid; grid-template-columns: 1fr auto; gap:0;
+  }
+  .titleblock-main{ padding:22px 24px; border-right:1.5px solid var(--ink); }
+  .eyebrow{
+    font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--blue); margin:0 0 6px;
+  }
+  h1{
+    font-family:'IBM Plex Sans Condensed'; font-weight:700; font-size:clamp(26px,4vw,36px);
+    letter-spacing:.01em; margin:0 0 6px; text-wrap:balance; color:var(--ink);
+  }
+  .sub{ color:var(--ink-soft); font-size:14.5px; max-width:56ch; margin:0; }
+  .titleblock-meta{
+    display:grid; grid-template-rows:repeat(4,1fr); font-family:'IBM Plex Mono',monospace; font-size:11px;
+  }
+  .titleblock-meta div{
+    padding:8px 16px; border-bottom:1px solid var(--paper-line); display:flex; flex-direction:column; gap:2px; min-width:150px;
+  }
+  .titleblock-meta div:last-child{ border-bottom:none; }
+  .titleblock-meta span.k{ color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em; font-size:9.5px; }
+  .titleblock-meta span.v{ color:var(--ink); font-weight:500; }
+
+  .sheet{ margin-top:34px; }
+  .sheet-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:14px; }
+  .sheet-num{
+    font-family:'IBM Plex Mono'; font-size:12px; color:var(--card); background:var(--blue-deep);
+    padding:3px 8px; font-weight:600;
+  }
+  .sheet-title{ font-family:'IBM Plex Sans Condensed'; font-weight:600; font-size:19px; margin:0; }
+  .sheet-note{ color:var(--ink-soft); font-size:13px; margin:2px 0 16px; max-width:70ch; }
+
+  /* data tiles */
+  .tiles{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+  .tile{
+    background:var(--card); border:1px solid var(--paper-line); box-shadow:var(--shadow);
+    padding:14px 16px; display:flex; flex-direction:column; gap:6px; position:relative;
+  }
+  .tile .n{ font-family:'IBM Plex Mono'; font-variant-numeric:tabular-nums; font-weight:600; font-size:28px; color:var(--blue-deep); line-height:1; }
+  .tile .lbl{ font-size:12px; color:var(--ink-soft); line-height:1.35; }
+  .tile .tag{
+    align-self:flex-start; font-family:'IBM Plex Mono'; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:2px 6px; border-radius:2px; margin-top:2px;
+  }
+  .tag.good{ background:var(--good-tint); color:var(--good); }
+  .tag.warn{ background:var(--warn-tint); color:var(--warn); }
+  .tag.redline{ background:var(--redline-tint); color:var(--redline); border:1px dashed var(--redline); }
+
+  /* redline proposed panel */
+  .proposed{
+    border:1.5px dashed var(--redline); background:var(--redline-tint); padding:16px 18px; margin-top:16px;
+  }
+  .proposed .ptitle{
+    font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--redline); font-weight:600; margin:0 0 8px; display:flex; align-items:center; gap:8px;
+  }
+  .proposed .ptitle::before{ content:"✎"; font-size:13px; }
+  .proposed p{ margin:0 0 8px; font-size:13.5px; color:var(--ink); }
+  .proposed p:last-child{ margin-bottom:0; }
+
+  table{ width:100%; border-collapse:collapse; background:var(--card); box-shadow:var(--shadow); font-size:13.5px; }
+  caption{ text-align:left; font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-soft); margin-bottom:6px; letter-spacing:.03em; }
+  th,td{ text-align:left; padding:9px 12px; border-bottom:1px solid var(--paper-line); }
+  th{ font-family:'IBM Plex Mono'; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:500; background:var(--blue-tint); }
+  td.num, th.num{ font-family:'IBM Plex Mono'; font-variant-numeric:tabular-nums; text-align:right; }
+  tr:last-child td{ border-bottom:none; }
+  .table-scroll{ overflow-x:auto; }
+  .totalrow td{ font-weight:600; border-top:1.5px solid var(--ink); background:var(--blue-tint); }
+
+  .phase-list{ display:flex; flex-direction:column; gap:10px; }
+  .phase{
+    background:var(--card); border:1px solid var(--paper-line); box-shadow:var(--shadow);
+    display:grid; grid-template-columns:64px 1fr; gap:0;
+  }
+  .phase-num{
+    background:var(--blue-deep); color:#fff; font-family:'IBM Plex Mono'; font-weight:600; font-size:20px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .phase-body{ padding:14px 18px; }
+  .phase-body h3{ margin:0 0 4px; font-family:'IBM Plex Sans Condensed'; font-size:16px; font-weight:600; }
+  .phase-body .when{ font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--blue); text-transform:uppercase; letter-spacing:.06em; }
+  .phase-body ul{ margin:8px 0 0; padding-left:18px; font-size:13.5px; color:var(--ink-soft); }
+  .phase-body li{ margin-bottom:4px; }
+  .phase-body li b{ color:var(--ink); font-weight:600; }
+
+  .legend{ display:flex; flex-wrap:wrap; gap:14px; margin-top:20px; font-size:11.5px; color:var(--ink-soft); font-family:'IBM Plex Mono'; }
+  .legend span{ display:flex; align-items:center; gap:5px; }
+  .legend i{ width:10px; height:10px; display:inline-block; border-radius:2px; }
+
+  footer{ margin-top:40px; padding-top:14px; border-top:1px solid var(--paper-line); font-size:11.5px; color:var(--ink-soft); font-family:'IBM Plex Mono'; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  @media (max-width:640px){
+    .titleblock{ grid-template-columns:1fr; }
+    .titleblock-main{ border-right:none; border-bottom:1.5px solid var(--ink); }
+    .titleblock-meta{ grid-template-rows:none; grid-template-columns:1fr 1fr; }
+    .phase{ grid-template-columns:44px 1fr; }
+    .phase-num{ font-size:16px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="titleblock">
+    <div class="titleblock-main">
+      <p class="eyebrow">Sightline · AEC Lead-Gen Field Sheet</p>
+      <h1>David McKay — Saint Paul / Twin Cities Metro</h1>
+      <p class="sub">Live parcel data, fee economics, and a phased channel plan. Every solid number below was pulled from Ramsey and Hennepin County's public GIS feeds on 2026‑09‑18. Dashed red panels are proposed, not yet purchased or built.</p>
+    </div>
+    <div class="titleblock-meta">
+      <div><span class="k">Prepared by</span><span class="v">Jon &amp; Sightline</span></div>
+      <div><span class="k">Date</span><span class="v">2026‑09‑18</span></div>
+      <div><span class="k">Status</span><span class="v">Draft for review</span></div>
+      <div><span class="k">Scope</span><span class="v">Ramsey + Hennepin Co.</span></div>
+    </div>
+  </div>
+
+  <!-- SHEET 1: DATA -->
+  <div class="sheet">
+    <div class="sheet-head"><span class="sheet-num">SHEET 1</span><h2 class="sheet-title">Site Data — What's Live Today</h2></div>
+    <p class="sheet-note">Pulled directly from each county's open parcel API (Ramsey County Open GIS; Hennepin County LAND_PROPERTY). Free, structured, no subscription. Trailing 12 months.</p>
+
+    <div class="tiles">
+      <div class="tile"><span class="tag good">Verified</span><div class="n">62</div><div class="lbl">Vacant residential lots sold — Saint Paul</div></div>
+      <div class="tile"><span class="tag good">Verified</span><div class="n">43</div><div class="lbl">Teardown candidates — Saint Paul (pre‑1955, land ≥80% of building value)</div></div>
+      <div class="tile"><span class="tag good">Verified</span><div class="n">78</div><div class="lbl">Vacant residential lots sold — Minneapolis</div></div>
+      <div class="tile"><span class="tag warn">Needs filtering</span><div class="n">968</div><div class="lbl">Individual‑owned vacant lots, rest of Hennepin Co. (of 1,442 total, 33% LLC‑owned) — not yet narrowed to target ZIPs</div></div>
+      <div class="tile"><span class="tag warn">Needs recalibration</span><div class="n">815→?</div><div class="lbl">Minneapolis teardown heuristic over‑flags expensive lake‑district homes — rebuild before use</div></div>
+      <div class="tile"><span class="tag good">Free, in hand</span><div class="n">100%</div><div class="lbl">Of owners above have a mailing address on file — no skip‑trace needed for individuals</div></div>
+    </div>
+
+    <div class="proposed">
+      <p class="ptitle">Proposed — not yet purchased</p>
+      <p><b>Northstar MLS access</b> unlocks two things county data can't: lots <i>currently listed</i> (earlier signal than "already sold") and the <b>listing agent / brokerage on every transaction</b> — the realtor BD list David asked for. This is the single highest‑leverage purchase available.</p>
+      <p><b>PropStream / BatchLeads</b> ($99–197/mo) add phone/email skip‑trace beyond Minnesota and beyond what county mailing addresses already give us for free here.</p>
+      <p><b>Schema fix, near‑zero cost once MLS exists:</b> add "listing agent / brokerage" as a second contact‑path field next to owner on every record. Fixes the "contacting the owner directly is weird" problem David raised, without a separate product.</p>
+    </div>
+  </div>
+
+  <!-- SHEET 2: FEE MODEL -->
+  <div class="sheet">
+    <div class="sheet-head"><span class="sheet-num">SHEET 2</span><h2 class="sheet-title">Fee Model — Year 1 Ramp</h2></div>
+    <p class="sheet-note">Midwest architect fee range (5–11% of construction cost) ramping as reputation builds, applied to $750k — the real Twin Cities average for a 2,000–2,500 sq ft custom build or teardown‑rebuild (sourced, not a guess). 6 jobs = David's own stated solo capacity.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>Fee on a $750,000 average project</caption>
+        <thead><tr><th>Job</th><th class="num">Fee rate</th><th class="num">Fee</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="num">5.0%</td><td class="num">$37,500</td></tr>
+          <tr><td>2</td><td class="num">6.2%</td><td class="num">$46,500</td></tr>
+          <tr><td>3</td><td class="num">7.4%</td><td class="num">$55,500</td></tr>
+          <tr><td>4</td><td class="num">8.6%</td><td class="num">$64,500</td></tr>
+          <tr><td>5</td><td class="num">9.8%</td><td class="num">$73,500</td></tr>
+          <tr><td>6</td><td class="num">11.0%</td><td class="num">$82,500</td></tr>
+          <tr class="totalrow"><td colspan="2">Year 1 gross fee revenue</td><td class="num">$360,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sheet-note" style="margin-top:14px;">Beyond 6 jobs/year, add designer capacity rather than David's own hours — but only past the <b>~9% breakeven point</b>. A delegated job's labor cost (~$50k–62.5k at a PM's $125/hr) loses money against an early‑ramp fee (Jobs 1–2), and only turns profitable once the fee clears roughly $67,500.</p>
+  </div>
+
+  <!-- SHEET 3: CHANNEL BENCHMARKS -->
+  <div class="sheet">
+    <div class="sheet-head"><span class="sheet-num">SHEET 3</span><h2 class="sheet-title">Channel Benchmarks &amp; Volume Needed</h2></div>
+    <p class="sheet-note">Sourced 2026 benchmarks per channel, and the volume required from each to move the needle toward 6 closed jobs/year.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>All figures sourced; see field‑sheet footnotes</caption>
+        <thead><tr><th>Channel</th><th>Benchmark</th><th>Volume needed</th></tr></thead>
+        <tbody>
+          <tr><td>Direct mail — property owners (personalized)</td><td class="num">10% response<br><span style="color:var(--ink-soft);font-size:11.5px;">(David's own proven rate; generic filtered mail is 1.4–2.1%)</span></td><td>~16–20 mailers/mo → ~196/yr pool → 4–6 jobs</td></tr>
+          <tr><td>Realtor BD outreach (email/LinkedIn, post‑MLS)</td><td class="num">5–10% reply<br><span style="color:var(--ink-soft);font-size:11.5px;">(targeted professional list)</span></td><td>~150–200 of the ~500 active land realtors/yr</td></tr>
+          <tr><td>Cold email — LLC/builder segment</td><td class="num">3.4% avg reply / 1–2% meeting‑booked</td><td>Small pool (~20% of LLCs resolve in Apollo)</td></tr>
+          <tr><td>Google Ads (Search)</td><td class="num">$8.33 CPC · 6.5% CTR · 8% CVR · $91 CPL</td><td>~$900–1,000/mo → ~10 leads/mo</td></tr>
+          <tr><td>Meta / Instagram Ads</td><td class="num">$34 CPL (home services) · 2–3% CTR</td><td>~$340/mo → ~10 leads/mo</td></tr>
+          <tr><td>Houzz Pro</td><td class="num">Flat‑rate (Ultimate tier), not per‑lead</td><td>Budget as subscription; track effective CPL after volume</td></tr>
+          <tr><td>GEO — AI search visibility</td><td class="num">Foundational, not volume‑metered</td><td>Schema markup + FAQ blocks + consistent NAP, one‑time + quarterly refresh</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SHEET 4: PHASED PLAN -->
+  <div class="sheet">
+    <div class="sheet-head"><span class="sheet-num">SHEET 4</span><h2 class="sheet-title">Phased Rollout</h2></div>
+    <div class="phase-list">
+      <div class="phase">
+        <div class="phase-num">1</div>
+        <div class="phase-body">
+          <span class="when">Month 1 · Foundation</span>
+          <h3>Get found and get organized — no spend yet</h3>
+          <ul>
+            <li>Website rebuilt for local SEO <b>and</b> GEO: schema markup, 40–60 word answer blocks, consistent name/address/phone everywhere</li>
+            <li>One CRM, connected to a sequencing agent — a single stack, not five tools stitched together</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">2</div>
+        <div class="phase-body">
+          <span class="when">Month 1–2 · Data &amp; Lists</span>
+          <h3>Stand up the feeds, decide on MLS</h3>
+          <ul>
+            <li>Turn on the free Ramsey + Hennepin feeds (Sheet 1) — live today</li>
+            <li>Decide on Northstar MLS access — it's the one paid call that unlocks the realtor BD list and pre‑sale timing</li>
+            <li>Build teardown‑candidate scoring into the feed (validated in Saint Paul)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">3</div>
+        <div class="phase-body">
+          <span class="when">Month 2+ · Outbound (ongoing)</span>
+          <h3>Personalized mail, then realtor relationships</h3>
+          <ul>
+            <li>Property‑buyer mail: an agent drafts a property‑specific note per record; a service like <b>Lob</b> or <b>Thanks.io</b> prints and mails it for ~$1–3/piece — cheaper and better‑fit than Sendoso, which is built for corporate gifting, not one‑page personal letters at this volume</li>
+            <li>Realtor BD outreach once the MLS‑sourced list exists: email + LinkedIn, focused on the ~150–200 most active land/teardown realtors, not all 500</li>
+            <li>Phone follow‑up only on warm responders — never cold dialing first</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">4</div>
+        <div class="phase-body">
+          <span class="when">Ongoing · Inbound &amp; Feedback</span>
+          <h3>Compounding channels + close the loop</h3>
+          <ul>
+            <li>Houzz Pro profile, Google Ads, Meta/Instagram — budgets and expected volume in Sheet 3</li>
+            <li>Referral flywheel: every closed job becomes a review and a referral ask</li>
+            <li>Track which channel produces <i>closed jobs</i>, not just leads, and reallocate monthly</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">5</div>
+        <div class="phase-body">
+          <span class="when">Maturity · Competitive Intel &amp; Autonomous Loop</span>
+          <h3>Watch the market, run the loop continuously</h3>
+          <ul>
+            <li>Monitor competitor positioning via the free <b>Meta Ad Library</b> and a tool like SpyFu/SEMrush for competitor Google Ads keywords — see what other Twin Cities design/build firms run, and where the gap is</li>
+            <li>Stand up a standing agent that re‑pulls the county feeds weekly, re‑scores new signals, drafts outreach copy for new records, and only surfaces a human decision for anything that costs money or gets sent</li>
+            <li>Shift channel budget automatically toward whatever is actually converting to closed jobs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--good-tint);border:1px solid var(--good);"></i>Verified from live data</span>
+      <span><i style="background:var(--warn-tint);border:1px solid var(--warn);"></i>Needs more filtering before use</span>
+      <span><i style="background:var(--redline-tint);border:1px dashed var(--redline);"></i>Proposed, not yet purchased/built</span>
+    </div>
+  </div>
+
+  <footer>
+    <span>Sightline AEC Track — Field Sheet</span>
+    <span>Sources: Ramsey County Open GIS · Hennepin County LAND_PROPERTY · Google Ads/Meta 2026 industry benchmarks · Minnesota architect fee surveys</span>
+  </footer>
+</div>
