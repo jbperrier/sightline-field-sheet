@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Daley Electric Field Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f2f4f5;
+    --paper-line:#c7d2d8;
+    --ink:#132635;
+    --ink-soft:#3d5164;
+    --blue:#1f5fa8;
+    --blue-deep:#123a66;
+    --blue-tint:#e4edf6;
+    --good:#3f6b4a;
+    --good-tint:#e7efe8;
+    --warn:#8a5a20;
+    --warn-tint:#f5ecdc;
+    --redline:#a13a2f;
+    --redline-tint:#f7e9e6;
+    --card:#ffffff;
+    --shadow:0 1px 2px rgba(19,38,53,.06),0 6px 20px rgba(19,38,53,.05);
+    --sans:'IBM Plex Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --cond:'IBM Plex Sans Condensed','IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+      --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+      --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+      --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+    --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+    --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+    --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background-color:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;
+    background-image:linear-gradient(var(--paper-line) 1px,transparent 1px),linear-gradient(90deg,var(--paper-line) 1px,transparent 1px);
+    background-size:28px 28px;background-attachment:local;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:28px 60px}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  /* title block */
+  .titleblock{background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto}
+  .titleblock-main{padding:22px 24px;border-right:1.5px solid var(--ink)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+  h1{font-family:var(--cond);font-weight:700;font-size:clamp(26px,4vw,36px);letter-spacing:.01em;margin:0 0 6px;text-wrap:balance}
+  .sub{color:var(--ink-soft);font-size:14.5px;max-width:58ch;margin:0}
+  .titleblock-meta{display:grid;grid-template-rows:repeat(4,1fr);font-family:var(--mono);font-size:11px}
+  .titleblock-meta div{padding:8px 16px;border-bottom:1px solid var(--paper-line);display:flex;flex-direction:column;gap:2px;min-width:170px}
+  .titleblock-meta div:last-child{border-bottom:none}
+  .titleblock-meta .k{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;font-size:9.5px}
+  .titleblock-meta .v{font-weight:500}
+
+  /* sheets */
+  .sheet{margin-top:38px}
+  .sheet-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+  .sheet-num{font-family:var(--mono);font-size:12px;color:var(--card);background:var(--blue-deep);padding:3px 8px;font-weight:600}
+  .sheet-title{font-family:var(--cond);font-weight:600;font-size:19px;margin:0;text-wrap:balance}
+  .sheet-note{color:var(--ink-soft);font-size:13px;margin:0 0 16px;max-width:72ch}
+  h3.sub-h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin:22px 0 8px}
+
+  /* tiles */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .tile{background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+  .tile .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:27px;color:var(--blue-deep);line-height:1}
+  .tile .lbl{font-size:12px;color:var(--ink-soft);line-height:1.35}
+  .tag{align-self:flex-start;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:2px;white-space:nowrap;display:inline-block}
+  .tag.good{background:var(--good-tint);color:var(--good)}
+  .tag.warn{background:var(--warn-tint);color:var(--warn)}
+  .tag.blue{background:var(--blue-tint);color:var(--blue)}
+  .tag.redline{background:var(--redline-tint);color:var(--redline);border:1px dashed var(--redline)}
+
+  /* proposed panels */
+  .proposed{border:1.5px dashed var(--redline);background:var(--redline-tint);padding:16px 18px}
+  .proposed .ptitle{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--redline);font-weight:600;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .proposed .ptitle::before{content:"\270E";font-size:13px}
+  .proposed p{margin:0 0 8px;font-size:13.5px}
+  .proposed p:last-child{margin-bottom:0}
+  .proposed ul{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:4px}
+  .stack{display:grid;gap:12px;margin-top:16px}
+
+  /* tables */
+  .table-scroll{overflow-x:auto;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;background:var(--card);font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--paper-line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;background:var(--blue-tint);white-space:nowrap}
+  td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  tr.totalrow td{font-weight:600;border-top:1.5px solid var(--ink);background:var(--blue-tint)}
+  td small{display:block;color:var(--ink-soft);font-size:11.5px;font-weight:400}
+  .dim{color:var(--ink-soft)}
+
+  /* scenario switch */
+  .seg{display:inline-flex;border:1.5px solid var(--ink);background:var(--card)}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;cursor:pointer;border-right:1px solid var(--paper-line)}
+  .seg label:last-of-type{border-right:none}
+  .seg input:checked+label{background:var(--blue-deep);color:var(--card)}
+  .seg input:focus-visible+label{outline:2px solid var(--blue);outline-offset:2px}
+  .controls{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-bottom:14px}
+  .controls .hint{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+
+  /* bars */
+  .bars{display:grid;gap:8px;margin-top:14px;background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px}
+  .bar-row{display:grid;grid-template-columns:96px 1fr 84px;gap:12px;align-items:center;font-size:12.5px}
+  .bar-row .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+  .bar-track{height:14px;background:var(--blue-tint);position:relative}
+  .bar-fill{height:100%;background:var(--blue);min-width:1px}
+  .bar-fill.off{background:transparent;border:1.5px dashed var(--redline)}
+  .bar-row .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-weight:500}
+  .bars-cap{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.04em}
+
+  /* calculator */
+  .calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow)}
+  .calc-in{padding:18px 20px;border-right:1.5px solid var(--ink);display:grid;gap:14px;align-content:start}
+  .calc-out{padding:18px 20px;display:grid;gap:12px;align-content:start;background:var(--blue-tint)}
+  .field{display:grid;gap:4px}
+  .field .row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+  .field .row b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;color:var(--blue-deep)}
+  .field .fh{font-size:11.5px;color:var(--ink-soft)}
+  input[type=range]{width:100%;accent-color:var(--blue)}
+  input[type=number]{width:100%;font:inherit;font-family:var(--mono);padding:6px 8px;border:1px solid var(--ink-soft);background:var(--card);color:var(--ink)}
+  .out-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--paper-line);padding-bottom:8px;font-size:13px}
+  .out-line:last-child{border-bottom:none;padding-bottom:0}
+  .out-line .ov{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:18px;color:var(--blue-deep);text-align:right}
+  .out-line .ol small{display:block;color:var(--ink-soft);font-size:11.5px}
+  .verdict{font-size:13.5px;font-weight:500;border:1.5px solid var(--good);background:var(--good-tint);color:var(--good);padding:10px 12px}
+
+  /* roadmap */
+  .phases{display:grid;gap:12px}
+  .phase{display:grid;grid-template-columns:150px 1fr;gap:16px}
+  .phase .when{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--redline);font-weight:600}
+  .phase .when b{display:block;font-family:var(--cond);font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--ink);margin-top:2px}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:8px}
+  .legend div{display:flex;gap:10px;align-items:baseline;font-size:12.5px;color:var(--ink-soft)}
+  .foot{margin-top:34px;padding-top:14px;border-top:1.5px solid var(--ink);font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.6}
+
+  @media (max-width:720px){
+    .titleblock{grid-template-columns:1fr}
+    .titleblock-main{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .titleblock-meta{grid-template-columns:1fr 1fr;grid-template-rows:none}
+    .calc{grid-template-columns:1fr}
+    .calc-in{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .phase{grid-template-columns:1fr;gap:4px}
+    .bar-row{grid-template-columns:70px 1fr 70px;gap:8px}
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <header class="titleblock">
+    <div class="titleblock-main">
+      <p class="eyebrow">Sightline · Field Sheet · Electrical</p>
+      <h1>Daley Electric: Twin Cities Contractor Market</h1>
+      <p class="sub">What the 1,051 licensed Class A electrical contractors in the metro earn, what they spend to win work, and what a services-as-software program is worth to Daley and to firms like Daley.</p>
+    </div>
+    <div class="titleblock-meta">
+      <div><span class="k">Prepared for</span><span class="v">Daley Electric LLC, Newport MN</span></div>
+      <div><span class="k">Date</span><span class="v">2026-09-20</span></div>
+      <div><span class="k">Status</span><span class="v">Draft for review</span></div>
+      <div><span class="k">Scope</span><span class="v">Metro ZIP 550 / 551 / 553 / 554</span></div>
+    </div>
+  </header>
+
+  <!-- SHEET 1 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S1</span><h2 class="sheet-title">Site Data: Current Market Inventory</h2></div>
+    <p class="sheet-note">Public licensing and permit feeds, pulled 2026-09-20. Permit values are the numbers applicants declared, so they run low.</p>
+    <div class="tiles">
+      <div class="tile"><span class="n">1,051</span><span class="lbl">Class A electrical contractors, Twin Cities metro (MN DLI, status Issued)</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">2,646</span><span class="lbl">Class A electrical contractors statewide (2,201 with a Minnesota address)</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">308</span><span class="lbl">Different contractors pulling commercial electrical permits in Saint Paul, 12 months</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">25%</span><span class="lbl">Share of those permits held by the top 10 firms. The rest is spread thin.</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">1,109</span><span class="lbl">Commercial repair/alter electrical permits in Saint Paul. $44.6M declared. Mean $40,200.</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">$67M</span><span class="lbl">Declared commercial electrical work in Saint Paul (repair/alter plus new)</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">148</span><span class="lbl">Of the 308 pulled only one commercial permit. Many are occasional players.</span><span class="tag warn">Needs filtering</span></div>
+      <div class="tile"><span class="n">20</span><span class="lbl">Issued business electrical licenses with a Hastings address, all license types</span><span class="tag good">Verified</span></div>
+    </div>
+
+    <h3 class="sub-h">Daley Electric in the Saint Paul permit feed, Jul 2024 to Jun 2025</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Permit type</th><th class="num">Permits</th><th class="num">Declared value</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Commercial repair/alter</td><td class="num">6</td><td class="num">$342,501</td><td>One permit at $300,000 is 85% of Daley's total. Others: $35,000, $5,000, $2,000, $500, $1.</td></tr>
+          <tr><td>Residential repair/alter</td><td class="num">4</td><td class="num">$9,100</td><td>$4,500, $3,100, $1,000, $500.</td></tr>
+          <tr><td>New construction</td><td class="num">0</td><td class="num">$0</td><td>No new-build permits in the window.</td></tr>
+          <tr class="totalrow"><td>Total</td><td class="num">10</td><td class="num">$351,601</td><td>Class A license EA006578, first issued 2011-04-15. One city only.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SHEET 2 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S2</span><h2 class="sheet-title">Signal Check: What Finds Daley New Work</h2></div>
+    <p class="sheet-note">Each signal tested against public data. A signal only helps if it arrives before the general contractor has picked an electrician.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Signal</th><th>What the data shows</th><th>Use for Daley</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Issued permits</td><td>No application date in Saint Paul or Minneapolis. Saint Paul's feed ends 2025-06-30. Minneapolis lists Issued, Open and Closed only.</td><td>Competitor map and market size. Not a lead source: an issued permit means the job is already won.</td><td><span class="tag good">Verified</span></td></tr>
+          <tr><td>Builder buys vacant lot</td><td>About half of vacant-lot buyers in Saint Paul and Minneapolis are entities. Hastings: 1 vacant sale, no builders among 198 home resales.</td><td>Dead in Hastings. It also points at new homes, and Daley works commercial.</td><td><span class="tag good">Verified</span></td></tr>
+          <tr><td>Planning and site-plan agendas</td><td>Hastings Planning Commission meets the 2nd and 4th Monday. The Development Review Committee meets Tuesdays. Public.</td><td>Earliest signal that names a project and its GC. Assumed to lead the bid by 6 to 18 months. Not back-tested.</td><td><span class="tag warn">Assumption</span></td></tr>
+          <tr><td>GC bid invitations</td><td>PlanHub, ConstructConnect and BuildingConnected already carry bid-stage work.</td><td>Where Daley wins work today. Well served by incumbents.</td><td><span class="tag blue">Sourced</span></td></tr>
+          <tr><td>DLI license list</td><td>Nightly export. Phone numbers filled in. No email addresses. No size or revenue field.</td><td>The target list of 1,051 peers. Needs enrichment before outreach.</td><td><span class="tag good">Verified</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SHEET 3 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S3</span><h2 class="sheet-title">Who the 1,051 Are: Revenue, Marketing Spend, Agent Wallet</h2></div>
+    <p class="sheet-note">No public file gives revenue per firm, so the tiers below are an estimate. The total is cross-checked against national industry revenue. Pick a spending scenario to see the wallet move.</p>
+
+    <div class="controls">
+      <div class="seg" role="radiogroup" aria-label="Spending scenario">
+        <input type="radio" name="scn" id="scnLow" value="low"><label for="scnLow">Low</label>
+        <input type="radio" name="scn" id="scnMid" value="mid" checked><label for="scnMid">Mid</label>
+        <input type="radio" name="scn" id="scnHigh" value="high"><label for="scnHigh">High</label>
+      </div>
+      <span class="hint" id="scnHint"></span>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr>
+          <th>Tier</th><th class="num">Firms</th><th class="num">Avg revenue</th><th class="num">Marketing / firm</th><th class="num">Agent wallet / firm</th><th class="num">Agent wallet, tier</th><th>Fit</th>
+        </tr></thead>
+        <tbody id="tierRows"></tbody>
+      </table>
+    </div>
+
+    <div class="bars" id="bars" aria-label="Agent wallet by tier"></div>
+
+    <div class="tiles" style="margin-top:14px" id="s3tiles"></div>
+
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">How these numbers are built</p>
+        <ul>
+          <li>Firm counts: the 1,051 is verified. The split across tiers is my assumption (40% / 42% / 15% / 3%).</li>
+          <li>Revenue per firm: national electrician revenue of about $312B across about 265,000 businesses is $1.1M to $1.2M a firm, but that count includes one-person shops. Class A firms with employees run higher.</li>
+          <li>Cross-check: the tier total of about $3.2B compares with about $3.4B from spreading national revenue by population for a 3.7M-person metro. That population figure is my assumption.</li>
+          <li>Marketing share: agency guides say 4 to 7% of revenue for established firms and 8 to 12% for growth. Those guides sell marketing, so they run high. Commercial subs live on relationships and bids, so the scenarios use 1.5%, 2.5% and 4%.</li>
+          <li>Agent wallet: the slice of marketing money a firm moves to an agent-run outbound and bid-intelligence service. 15%, 25% or 35%. A tier below $6,000 a year is not worth serving.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHEET 4 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S4</span><h2 class="sheet-title">Daley Payback Calculator</h2></div>
+    <p class="sheet-note">Daley's revenue is not public. It starts at $2.5M, which is an assumption based on a team of roughly 10 to 15 electricians. Change it to the real number.</p>
+
+    <div class="calc">
+      <div class="calc-in">
+        <div class="field">
+          <div class="row"><label for="cRev">Annual revenue</label><b id="cRevV"></b></div>
+          <input type="range" id="cRev" min="500000" max="20000000" step="250000" value="2500000">
+        </div>
+        <div class="field">
+          <div class="row"><label for="cMkt">Marketing and business development, % of revenue</label><b id="cMktV"></b></div>
+          <input type="range" id="cMkt" min="0.5" max="8" step="0.5" value="2.5">
+        </div>
+        <div class="field">
+          <div class="row"><label for="cShift">Share moved to an agent-run service</label><b id="cShiftV"></b></div>
+          <input type="range" id="cShift" min="5" max="50" step="5" value="25">
+        </div>
+        <div class="field">
+          <div class="row"><label for="cJob">Average commercial job, $</label></div>
+          <input type="number" id="cJob" min="1000" step="500" value="40200">
+          <span class="fh">Default: mean commercial repair/alter electrical permit in Saint Paul, $40,200.</span>
+        </div>
+        <div class="field">
+          <div class="row"><label for="cMargin">Gross margin on a job</label><b id="cMarginV"></b></div>
+          <input type="range" id="cMargin" min="20" max="40" step="1" value="30">
+          <span class="fh">Commercial bid work runs 25 to 35% (national guides).</span>
+        </div>
+        <div class="field">
+          <div class="row"><label for="cWin">Bid win rate</label><b id="cWinV"></b></div>
+          <input type="range" id="cWin" min="20" max="50" step="1" value="35">
+          <span class="fh">National guidance: 30 to 40%.</span>
+        </div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="out-line"><span class="ol">Marketing budget<small>revenue x marketing %</small></span><span class="ov" id="oBudget"></span></div>
+        <div class="out-line"><span class="ol">Agent service spend<small id="oPerMo"></small></span><span class="ov" id="oAgent"></span></div>
+        <div class="out-line"><span class="ol">Gross profit per won job<small>job value x margin</small></span><span class="ov" id="oGP"></span></div>
+        <div class="out-line"><span class="ol">Extra won jobs to break even<small>agent spend / gross profit per job</small></span><span class="ov" id="oJobs"></span></div>
+        <div class="out-line"><span class="ol">Extra bids needed<small>at the win rate above</small></span><span class="ov" id="oBids"></span></div>
+        <div class="verdict" id="oVerdict"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHEET 5 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S5</span><h2 class="sheet-title">Year 1 Revenue Ramp: Services-as-Software</h2></div>
+    <p class="sheet-note">Vendor revenue from selling the program to metro contractors. It is priced above a software subscription because the agents run the work: finding projects and GCs, drafting outreach, and tracking bids. A person reviews the output.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Case</th><th class="num">Customers, month 12</th><th class="num">Blended price / mo</th><th class="num">Customer-months</th><th class="num">Year 1 revenue</th><th class="num">Year-end ARR</th><th class="num">Share of 599 target firms</th></tr></thead>
+        <tbody>
+          <tr><td>Low</td><td class="num">8</td><td class="num">$1,000</td><td class="num">50</td><td class="num">$50,000</td><td class="num">$96,000</td><td class="num">1.3%</td></tr>
+          <tr><td>Base<small>10 small firms at $1,000, 5 mid at $3,000</small></td><td class="num">15</td><td class="num">$1,667</td><td class="num">88</td><td class="num">$146,700</td><td class="num">$300,000</td><td class="num">2.5%</td></tr>
+          <tr><td>High</td><td class="num">25</td><td class="num">$2,000</td><td class="num">147</td><td class="num">$294,000</td><td class="num">$600,000</td><td class="num">4.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tiles" style="margin-top:14px">
+      <div class="tile"><span class="n">599</span><span class="lbl">Target firms: small tier (441) plus mid tier (158)</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">$25k</span><span class="lbl">Monthly recurring revenue at month 12, base case</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">2.5x</span><span class="lbl">Base-case Year 1 revenue against software-only pricing at $600 a month ($52,800)</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">4 to 8</span><span class="lbl">Customers cold email alone can win: 1,600 emails, 1 to 2% book meetings, 25% close</span><span class="tag warn">Assumption</span></div>
+    </div>
+
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">Limits on this ramp</p>
+        <p>The base and high cases need warm channels: Daley's referrals, the Minnesota Electrical Association, and GC introductions. Cold email reaches 4 to 8 customers at most.</p>
+        <p>Delivery cost is not modeled. A service that a person reviews has lower gross margin than software, and hours per customer are unknown. Measure them with the first three customers before setting the price.</p>
+        <p>Customer counts and prices are planning numbers. Five qualified customers describing the same problem and two paid pilots are still required before this becomes a business.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHEET 6 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S6</span><h2 class="sheet-title">Price Anchors and Channel Benchmarks</h2></div>
+    <p class="sheet-note">The program sits between a bid-platform subscription and an agency retainer. Prices come from vendor pages and comparison sites, not quotes.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Option</th><th>What it costs</th><th>What it does not do</th></tr></thead>
+        <tbody>
+          <tr><td>PlanHub, sub side</td><td class="num">$1,999 to $3,299 a year</td><td>Shows bids GCs already posted. Does not find projects earlier.</td></tr>
+          <tr><td>ConstructConnect</td><td class="num">$129 to $1,000+ a month</td><td>Researched bid data. Some listings are already awarded.</td></tr>
+          <tr><td>BuildZoom</td><td class="num">2.5% to 4.5% of job</td><td>Homeowner leads, mostly residential.</td></tr>
+          <tr><td>Local marketing retainer</td><td class="num">$2,500 to $5,000 a month</td><td>Search, reviews and ads. Ad spend is extra.</td></tr>
+          <tr><td>Outbound appointment setting</td><td class="num">$9,000 to $15,000 a month</td><td>Priced for large accounts. Phone-first.</td></tr>
+          <tr class="totalrow"><td>Proposed program</td><td class="num">$1,000 to $3,000 a month</td><td>Agents run project and GC discovery, drafting and bid tracking.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tiles" style="margin-top:14px">
+      <div class="tile"><span class="n">3.4%</span><span class="lbl">Average cold-email reply rate. 1 to 2% of emails book a meeting.</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">$40 to $300</span><span class="lbl">Cost per construction lead from search and lead-buying platforms</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">30 to 40%</span><span class="lbl">Healthy win rate for electrical bids. Above 40% often means prices are too low.</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">None</span><span class="lbl">Benchmark for GC referral and association channels. Measure it directly.</span><span class="tag warn">Gap</span></div>
+    </div>
+  </section>
+
+  <!-- SHEET 7 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S7</span><h2 class="sheet-title">Phased Implementation Roadmap</h2></div>
+    <p class="sheet-note">Nothing here is built or bought. Each phase is a proposal.</p>
+    <div class="phases">
+      <div class="proposed phase">
+        <div class="when">Month 1<b>Foundation</b></div>
+        <div><ul>
+          <li>Interview Daley: how jobs arrive today, which bid platforms it pays for, which GCs send work, hours spent per bid.</li>
+          <li>One CRM with a sequencing agent. A short page for estimators.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Months 1 to 2<b>Data and lists</b></div>
+        <div><ul>
+          <li>Enrich the 1,051 DLI contractors with email and size. Rank by fit.</li>
+          <li>Build a GC list from building-permit contractor names.</li>
+          <li>Back-test planning agendas for Hastings and nearby cities: how many listed projects reached bid, and how early.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Month 2 on<b>Outbound</b></div>
+        <div><ul>
+          <li>Email and LinkedIn to owners and estimators. Human-approved drafts.</li>
+          <li>Ask Daley for introductions to 2 or 3 GCs and 2 or 3 peer subs.</li>
+          <li>Minnesota Electrical Association events. Daley is a member.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Ongoing<b>Referrals and feedback</b></div>
+        <div><ul>
+          <li>Track bids submitted and jobs won by signal source.</li>
+          <li>Review monthly by cost per meeting and per won job, not per lead.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Maturity<b>Standing agent</b></div>
+        <div><ul>
+          <li>Weekly agenda pulls, project and GC matching, drafted outreach.</li>
+          <li>Watch PlanHub and ConstructConnect for moves into earlier-stage data.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <h3 class="sub-h" style="margin-top:38px">Status labels</h3>
+  <div class="legend">
+    <div><span class="tag good">Verified</span> Pulled from a public source on 2026-09-20</div>
+    <div><span class="tag blue">Sourced</span> From a web source, not independently checked</div>
+    <div><span class="tag warn">Assumption</span> Planning number, change it if you know better</div>
+    <div><span class="tag redline">Proposed</span> Not yet built or bought (dashed red panels)</div>
+  </div>
+
+  <div class="foot">
+    Sources: MN DLI electrical license export (2026-09-20) · Saint Paul Approved_Building_Permits, Jul 2024 to Jun 2025 · Minneapolis CCS_Permits · Dakota, Ramsey and Hennepin County parcel feeds · daley-electric.com · Hastings Area Chamber · IBISWorld electricians summary · PlanHub, ConstructConnect, BuildZoom pricing pages · contractor marketing budget and agency pricing guides.<br>
+    Full analysis: Sightline AEC Track docs 05 and 05a. AEC is not a chosen lane. This sheet is field research, not a decision.
+  </div>
+</div>
+
+<script>
+(function(){
+  var fmtM=function(n){
+    if(n>=1e9) return '$'+(n/1e9).toFixed(1)+'B';
+    if(n>=1e6) return '$'+(n/1e6).toFixed(n>=1e7?0:1).replace(/\.0$/,'')+'M';
+    if(n>=1e3) return '$'+(n/1e3).toFixed(n>=1e5?0:1).replace(/\.0$/,'')+'k';
+    return '$'+Math.round(n);
+  };
+  var fmtN=function(n){return Math.round(n).toLocaleString('en-US')};
+  var money=function(n){return '$'+fmtN(n)};
+
+  var TIERS=[
+    {k:'Micro',staff:'1 to 4 staff, service and residential',firms:420,rev:0.5e6,inhouse:false},
+    {k:'Small',staff:'5 to 19 staff',firms:441,rev:2e6,inhouse:false},
+    {k:'Mid',staff:'20 to 99 staff',firms:158,rev:7e6,inhouse:false},
+    {k:'Large',staff:'100+ staff',firms:32,rev:30e6,inhouse:true}
+  ];
+  var SCN={low:{m:.015,s:.15,t:'Marketing 1.5% of revenue, 15% of it to an agent service'},
+           mid:{m:.025,s:.25,t:'Marketing 2.5% of revenue, 25% of it to an agent service'},
+           high:{m:.04,s:.35,t:'Marketing 4% of revenue, 35% of it to an agent service'}};
+  var FLOOR=6000;
+
+  function tiers(){
+    var key=document.querySelector('input[name=scn]:checked').value, sc=SCN[key];
+    document.getElementById('scnHint').textContent=sc.t+'. Minimum worth serving: $6,000 a year.';
+    var rows='',bars='',totRev=0,totMkt=0,totW=0,sam=0,samFirms=0,maxW=0,data=[];
+    TIERS.forEach(function(t){
+      var mkt=t.rev*sc.m, w=mkt*sc.s, tw=w*t.firms;
+      var fit=t.inhouse?['In-house BD, low adoption','warn']:(w<FLOOR?['Below $6k floor','redline']:['Target','good']);
+      totRev+=t.rev*t.firms; totMkt+=mkt*t.firms; totW+=tw;
+      if(fit[1]==='good'){sam+=tw;samFirms+=t.firms}
+      if(tw>maxW)maxW=tw;
+      data.push({t:t,tw:tw,fit:fit});
+      rows+='<tr><td>'+t.k+'<small>'+t.staff+'</small></td><td class="num">'+fmtN(t.firms)+'</td><td class="num">'+fmtM(t.rev)+'</td><td class="num">'+money(mkt)+'</td><td class="num">'+money(w)+'</td><td class="num">'+fmtM(tw)+'</td><td><span class="tag '+fit[1]+'">'+fit[0]+'</span></td></tr>';
+    });
+    rows+='<tr class="totalrow"><td>Total</td><td class="num">1,051</td><td class="num">'+fmtM(totRev/1051)+'</td><td class="num">'+fmtM(totMkt/1051)+'</td><td class="num">'+fmtM(totW/1051)+'</td><td class="num">'+fmtM(totW)+'</td><td></td></tr>';
+    document.getElementById('tierRows').innerHTML=rows;
+    data.forEach(function(d){
+      var pct=maxW?Math.max(1,d.tw/maxW*100):0, off=d.fit[1]!=='good';
+      bars+='<div class="bar-row"><span class="k">'+d.t.k+'</span><div class="bar-track"><div class="bar-fill'+(off?' off':'')+'" style="width:'+pct.toFixed(1)+'%"></div></div><span class="v">'+fmtM(d.tw)+'</span></div>';
+    });
+    bars+='<div class="bars-cap">Annual agent wallet by tier. Dashed bars fall outside the target set.</div>';
+    document.getElementById('bars').innerHTML=bars;
+    document.getElementById('s3tiles').innerHTML=
+      '<div class="tile"><span class="n">'+fmtM(totRev)+'</span><span class="lbl">Estimated yearly revenue of all 1,051 firms</span><span class="tag warn">Assumption</span></div>'+
+      '<div class="tile"><span class="n">'+fmtM(totMkt)+'</span><span class="lbl">Yearly marketing and business development spend</span><span class="tag warn">Assumption</span></div>'+
+      '<div class="tile"><span class="n">'+fmtM(totW)+'</span><span class="lbl">Agent wallet, all tiers</span><span class="tag warn">Assumption</span></div>'+
+      '<div class="tile"><span class="n">'+fmtM(sam)+'</span><span class="lbl">Reachable wallet: '+fmtN(samFirms)+' target firms, large tier and below-floor tiers left out</span><span class="tag warn">Assumption</span></div>';
+  }
+  document.querySelectorAll('input[name=scn]').forEach(function(r){r.addEventListener('change',tiers)});
+  tiers();
+
+  var g=function(id){return document.getElementById(id)};
+  function calc(){
+    var rev=+g('cRev').value, mk=+g('cMkt').value/100, sh=+g('cShift').value/100,
+        job=Math.max(1,+g('cJob').value||0), mg=+g('cMargin').value/100, win=+g('cWin').value/100;
+    g('cRevV').textContent=fmtM(rev);
+    g('cMktV').textContent=(mk*100).toFixed(1).replace(/\.0$/,'')+'%';
+    g('cShiftV').textContent=Math.round(sh*100)+'%';
+    g('cMarginV').textContent=Math.round(mg*100)+'%';
+    g('cWinV').textContent=Math.round(win*100)+'%';
+    var budget=rev*mk, agent=budget*sh, gp=job*mg, jobs=gp?agent/gp:0, bids=win?jobs/win:0;
+    g('oBudget').textContent=money(budget);
+    g('oAgent').textContent=money(agent);
+    g('oPerMo').textContent=money(agent/12)+' a month';
+    g('oGP').textContent=money(gp);
+    g('oJobs').textContent=jobs.toFixed(1);
+    g('oBids').textContent=bids.toFixed(1);
+    var v=g('oVerdict');
+    if(agent<FLOOR){
+      v.textContent='At '+money(agent/12)+' a month this is below a viable service price. Raise the marketing share or the amount moved.';
+      v.style.cssText='border-color:var(--warn);background:var(--warn-tint);color:var(--warn)';
+    }else{
+      v.textContent='One extra won job of '+money(job)+' covers '+Math.min(100,Math.round(gp/agent*100))+'% of a year of the service'+(jobs<=1?'. It pays back on the first extra win.':'. It pays back after about '+Math.ceil(jobs)+' extra wins.');
+      v.style.cssText='';
+    }
+  }
+  ['cRev','cMkt','cShift','cJob','cMargin','cWin'].forEach(function(id){g(id).addEventListener('input',calc)});
+  calc();
+})();
+</script>
+
+</body>
+</html>

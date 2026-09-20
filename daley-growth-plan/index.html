@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Daley Electric Growth Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f2f4f5;
+    --paper-line:#c7d2d8;
+    --ink:#132635;
+    --ink-soft:#3d5164;
+    --blue:#1f5fa8;
+    --blue-deep:#123a66;
+    --blue-tint:#e4edf6;
+    --good:#3f6b4a;
+    --good-tint:#e7efe8;
+    --warn:#8a5a20;
+    --warn-tint:#f5ecdc;
+    --redline:#a13a2f;
+    --redline-tint:#f7e9e6;
+    --card:#ffffff;
+    --shadow:0 1px 2px rgba(19,38,53,.06),0 6px 20px rgba(19,38,53,.05);
+    --sans:'IBM Plex Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --cond:'IBM Plex Sans Condensed','IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+      --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+      --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+      --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+    --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+    --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+    --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background-color:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;
+    background-image:linear-gradient(var(--paper-line) 1px,transparent 1px),linear-gradient(90deg,var(--paper-line) 1px,transparent 1px);
+    background-size:28px 28px;background-attachment:local;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:28px 60px}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  /* title block */
+  .titleblock{background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto}
+  .titleblock-main{padding:22px 24px;border-right:1.5px solid var(--ink)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+  h1{font-family:var(--cond);font-weight:700;font-size:clamp(26px,4vw,36px);letter-spacing:.01em;margin:0 0 6px;text-wrap:balance}
+  .sub{color:var(--ink-soft);font-size:14.5px;max-width:58ch;margin:0}
+  .titleblock-meta{display:grid;grid-template-rows:repeat(4,1fr);font-family:var(--mono);font-size:11px}
+  .titleblock-meta div{padding:8px 16px;border-bottom:1px solid var(--paper-line);display:flex;flex-direction:column;gap:2px;min-width:170px}
+  .titleblock-meta div:last-child{border-bottom:none}
+  .titleblock-meta .k{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;font-size:9.5px}
+  .titleblock-meta .v{font-weight:500}
+
+  /* sheets */
+  .sheet{margin-top:38px}
+  .sheet-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+  .sheet-num{font-family:var(--mono);font-size:12px;color:var(--card);background:var(--blue-deep);padding:3px 8px;font-weight:600}
+  .sheet-title{font-family:var(--cond);font-weight:600;font-size:19px;margin:0;text-wrap:balance}
+  .sheet-note{color:var(--ink-soft);font-size:13px;margin:0 0 16px;max-width:72ch}
+  h3.sub-h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin:22px 0 8px}
+
+  /* tiles */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .tile{background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+  .tile .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:27px;color:var(--blue-deep);line-height:1}
+  .tile .lbl{font-size:12px;color:var(--ink-soft);line-height:1.35}
+  .tag{align-self:flex-start;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:2px;white-space:nowrap;display:inline-block}
+  .tag.good{background:var(--good-tint);color:var(--good)}
+  .tag.warn{background:var(--warn-tint);color:var(--warn)}
+  .tag.blue{background:var(--blue-tint);color:var(--blue)}
+  .tag.redline{background:var(--redline-tint);color:var(--redline);border:1px dashed var(--redline)}
+
+  /* proposed panels */
+  .proposed{border:1.5px dashed var(--redline);background:var(--redline-tint);padding:16px 18px}
+  .proposed .ptitle{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--redline);font-weight:600;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .proposed .ptitle::before{content:"\270E";font-size:13px}
+  .proposed p{margin:0 0 8px;font-size:13.5px}
+  .proposed p:last-child{margin-bottom:0}
+  .proposed ul{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:4px}
+  .stack{display:grid;gap:12px;margin-top:16px}
+
+  /* tables */
+  .table-scroll{overflow-x:auto;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;background:var(--card);font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--paper-line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;background:var(--blue-tint);white-space:nowrap}
+  td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  tr.totalrow td{font-weight:600;border-top:1.5px solid var(--ink);background:var(--blue-tint)}
+  td small{display:block;color:var(--ink-soft);font-size:11.5px;font-weight:400}
+  .dim{color:var(--ink-soft)}
+
+  /* scenario switch */
+  .seg{display:inline-flex;border:1.5px solid var(--ink);background:var(--card)}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;cursor:pointer;border-right:1px solid var(--paper-line)}
+  .seg label:last-of-type{border-right:none}
+  .seg input:checked+label{background:var(--blue-deep);color:var(--card)}
+  .seg input:focus-visible+label{outline:2px solid var(--blue);outline-offset:2px}
+  .controls{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-bottom:14px}
+  .controls .hint{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+
+  /* bars */
+  .bars{display:grid;gap:8px;margin-top:14px;background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px}
+  .bar-row{display:grid;grid-template-columns:96px 1fr 84px;gap:12px;align-items:center;font-size:12.5px}
+  .bar-row .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+  .bar-track{height:14px;background:var(--blue-tint);position:relative}
+  .bar-fill{height:100%;background:var(--blue);min-width:1px}
+  .bar-fill.off{background:transparent;border:1.5px dashed var(--redline)}
+  .bar-row .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-weight:500}
+  .bars-cap{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.04em}
+
+  /* calculator */
+  .calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow)}
+  .calc-in{padding:18px 20px;border-right:1.5px solid var(--ink);display:grid;gap:14px;align-content:start}
+  .calc-out{padding:18px 20px;display:grid;gap:12px;align-content:start;background:var(--blue-tint)}
+  .field{display:grid;gap:4px}
+  .field .row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+  .field .row b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;color:var(--blue-deep)}
+  .field .fh{font-size:11.5px;color:var(--ink-soft)}
+  input[type=range]{width:100%;accent-color:var(--blue)}
+  input[type=number]{width:100%;font:inherit;font-family:var(--mono);padding:6px 8px;border:1px solid var(--ink-soft);background:var(--card);color:var(--ink)}
+  .out-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--paper-line);padding-bottom:8px;font-size:13px}
+  .out-line:last-child{border-bottom:none;padding-bottom:0}
+  .out-line .ov{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:18px;color:var(--blue-deep);text-align:right}
+  .out-line .ol small{display:block;color:var(--ink-soft);font-size:11.5px}
+  .verdict{font-size:13.5px;font-weight:500;border:1.5px solid var(--good);background:var(--good-tint);color:var(--good);padding:10px 12px}
+
+  /* roadmap */
+  .phases{display:grid;gap:12px}
+  .phase{display:grid;grid-template-columns:150px 1fr;gap:16px}
+  .phase .when{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--redline);font-weight:600}
+  .phase .when b{display:block;font-family:var(--cond);font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--ink);margin-top:2px}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:8px}
+  .legend div{display:flex;gap:10px;align-items:baseline;font-size:12.5px;color:var(--ink-soft)}
+  .foot{margin-top:34px;padding-top:14px;border-top:1.5px solid var(--ink);font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.6}
+
+  @media (max-width:720px){
+    .titleblock{grid-template-columns:1fr}
+    .titleblock-main{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .titleblock-meta{grid-template-columns:1fr 1fr;grid-template-rows:none}
+    .calc{grid-template-columns:1fr}
+    .calc-in{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .phase{grid-template-columns:1fr;gap:4px}
+    .bar-row{grid-template-columns:70px 1fr 70px;gap:8px}
+  }
+</style>
+
+<style>
+  table.act th:nth-child(2),table.act td:nth-child(2){min-width:260px}
+  table.act th:nth-child(4),table.act td:nth-child(4),table.act th:nth-child(5),table.act td:nth-child(5){min-width:190px}
+  table.act td .tag{margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="titleblock">
+    <div class="titleblock-main">
+      <p class="eyebrow">Sightline · Growth Plan · Electrical</p>
+      <h1>Daley Electric: Winning More Commercial Electrical Work</h1>
+      <p class="sub">Six sales and marketing activities, how often to do them, and the results published benchmarks say to expect. Every figure is a range from public records or industry sources. None of it is a promise.</p>
+    </div>
+    <div class="titleblock-meta">
+      <div><span class="k">Prepared for</span><span class="v">Daley Electric LLC</span></div>
+      <div><span class="k">Date</span><span class="v">2026-09-20</span></div>
+      <div><span class="k">Status</span><span class="v">Draft for review</span></div>
+      <div><span class="k">Basis</span><span class="v">Public records, benchmarks</span></div>
+    </div>
+  </header>
+
+  <!-- S1 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S1</span><h2 class="sheet-title">Where Daley Stands Today</h2></div>
+    <p class="sheet-note">What public records show about your market. Permit values are the amounts applicants declared, so real job sizes run higher.</p>
+    <div class="tiles">
+      <div class="tile"><span class="n">2011</span><span class="lbl">Your Class A electrical contractor license (EA006578) was first issued. Status: Issued.</span><span class="tag good">Public record</span></div>
+      <div class="tile"><span class="n">1,051</span><span class="lbl">Class A electrical contractors in the Twin Cities metro. They compete for the same GCs.</span><span class="tag good">Public record</span></div>
+      <div class="tile"><span class="n">25%</span><span class="lbl">Share of Saint Paul commercial electrical permits held by the ten busiest firms. About 300 other firms share the rest.</span><span class="tag good">Public record</span></div>
+      <div class="tile"><span class="n">$67M</span><span class="lbl">Commercial electrical work declared in Saint Paul permits over 12 months</span><span class="tag good">Public record</span></div>
+      <div class="tile"><span class="n">10</span><span class="lbl">Saint Paul electrical permits in your name over 12 months. 6 commercial alterations, 4 residential repairs. $351,601 declared.</span><span class="tag good">Public record</span></div>
+      <div class="tile"><span class="n">$40,200</span><span class="lbl">Average declared value of a Saint Paul commercial alteration permit. The middle permit is $5,400. A few large jobs lift the average.</span><span class="tag good">Public record</span></div>
+    </div>
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">What this means for you</p>
+        <p>No firm dominates commercial electrical work in the metro. The busiest ten hold a quarter of permits, so a firm with your credentials can win share by getting in front of more GCs.</p>
+        <p>Your public credentials help you with GCs: Class A license, WBE/SBE certification through CERT, ISNetworld and Browz approval, and OSHA 10/30 trained crews.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S2</span><h2 class="sheet-title">Six Activities and What to Expect</h2></div>
+    <p class="sheet-note">Start with activities 1 to 3. They cost mostly time and connect directly to bids. Activities 4 to 6 add reach later.</p>
+    <div class="table-scroll">
+      <table class="act">
+        <thead><tr><th>Activity</th><th>What you do</th><th>How often</th><th>Benchmark</th><th>What to expect</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>1. Get on more GC bid lists</b></td>
+            <td>Send a short email to GCs that build your kind of work. Reference a project they built. Four touches: day 1, 4, 10 and 21. Ask a peer or the Minnesota Electrical Association for introductions too.</td>
+            <td>10 new GCs a week</td>
+            <td>3.4% average reply. 1 to 2% of emails book a meeting. 5 to 10% reply with strong personalization. <span class="tag blue">Industry benchmark</span></td>
+            <td>100 GCs (400 emails) gives about 4 to 8 meetings.</td>
+            <td>Your time</td>
+          </tr>
+          <tr>
+            <td><b>2. Turn meetings into bid invitations</b></td>
+            <td>After each meeting, send your qualifications, three references, WBE/SBE certificate, safety approvals and insurance. Ask to join the bid list. Many public and institutional projects set WBE/SBE goals, so ask each GC.</td>
+            <td>Within 24 hours of a meeting</td>
+            <td>No published benchmark for invitations per GC. <span class="tag warn">Estimate</span></td>
+            <td>The calculator assumes 2 to 5 invitations a year from each GC that adds you.</td>
+            <td>Your time</td>
+          </tr>
+          <tr>
+            <td><b>3. Bid the right jobs and track every bid</b></td>
+            <td>Log each bid: won or lost, price gap, GC, job type. Drop job types you lose by wide margins. Consider a bid platform to see more invitations.</td>
+            <td>Weekly review</td>
+            <td>30 to 40% win rate on electrical bids. Above 40% often means prices are too low. <span class="tag blue">Industry benchmark</span></td>
+            <td>At 35%, about 3 bids per win.</td>
+            <td>PlanHub Premier: $1,999 a year (50 miles) to $3,299 (200 miles)</td>
+          </tr>
+          <tr>
+            <td><b>4. Watch planning agendas</b></td>
+            <td>The Hastings Planning Commission meets the 2nd and 4th Monday. The Development Review Committee meets Tuesdays. Note each commercial or industrial project and call the applicant's GC before design finishes. Repeat for Newport and nearby cities.</td>
+            <td>30 minutes a week</td>
+            <td>No published benchmark. We estimate 6 to 18 months of lead over the bid. <span class="tag warn">Estimate</span></td>
+            <td>1 to 2 early GC conversations a month. Test for 90 days before counting on it.</td>
+            <td>Your time</td>
+          </tr>
+          <tr>
+            <td><b>5. Turn finished jobs into service agreements</b></td>
+            <td>You already offer maintenance and 24-hour on-call. Offer a yearly inspection and service plan to each building owner when a job closes.</td>
+            <td>Every completed job</td>
+            <td>Service work gross margin: 48 to 55% at top-quartile firms. Commercial bid work: 25 to 32%. <span class="tag blue">Industry benchmark</span></td>
+            <td>Each service dollar earns about 1.5 to 2 times the margin of a bid dollar.</td>
+            <td>Your time</td>
+          </tr>
+          <tr>
+            <td><b>6. Show up in local search</b></td>
+            <td>Complete your Google Business Profile, ask every customer for a review, and list your service area. Do the free steps first. Pay for ads only after you see results.</td>
+            <td>Review request after each job</td>
+            <td>Local search marketing runs $1,500 to $4,500 a month for firms with $0.5M to $3M revenue. Leads cost $40 to $300 each. <span class="tag blue">Industry benchmark</span></td>
+            <td>Feeds service and maintenance calls. It does not feed GC bids.</td>
+            <td>$0 for profile and reviews. $1,500+ a month for paid help.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S3 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S3</span><h2 class="sheet-title">12-Month Results Calculator: Activities 1 to 3</h2></div>
+    <p class="sheet-note">Pick a scenario, then change any number to match Daley. The scenarios use the benchmark ranges from S2. Replace them with your own results after 90 days.</p>
+
+    <div class="controls">
+      <div class="seg" role="radiogroup" aria-label="Scenario">
+        <input type="radio" name="scn" id="scnC" value="cons"><label for="scnC">Conservative</label>
+        <input type="radio" name="scn" id="scnE" value="exp" checked><label for="scnE">Expected</label>
+        <input type="radio" name="scn" id="scnS" value="strong"><label for="scnS">Strong</label>
+      </div>
+      <span class="hint" id="scnHint"></span>
+    </div>
+
+    <div class="calc">
+      <div class="calc-in">
+        <div class="field"><div class="row"><label for="iRev">Your annual revenue, for context</label><b id="iRevV"></b></div>
+          <input type="range" id="iRev" min="500000" max="20000000" step="250000" value="2500000">
+          <span class="fh">Starts at $2.5M as an example. Enter your real figure.</span></div>
+        <div class="field"><div class="row"><label for="iGc">GCs you contact this year</label><b id="iGcV"></b></div>
+          <input type="range" id="iGc" min="20" max="300" step="10" value="100"></div>
+        <div class="field"><div class="row"><label for="iTouch">Emails per GC</label><b id="iTouchV"></b></div>
+          <input type="range" id="iTouch" min="1" max="6" step="1" value="4"></div>
+        <div class="field"><div class="row"><label for="iMeet">Meetings booked per 100 emails</label><b id="iMeetV"></b></div>
+          <input type="range" id="iMeet" min="0.5" max="4" step="0.5" value="1.5">
+          <span class="fh">Benchmark: 1 to 2.</span></div>
+        <div class="field"><div class="row"><label for="iAdd">Meetings that add you to a bid list</label><b id="iAddV"></b></div>
+          <input type="range" id="iAdd" min="20" max="80" step="5" value="50">
+          <span class="fh">Estimate. No published benchmark.</span></div>
+        <div class="field"><div class="row"><label for="iInv">Bid invitations per GC per year</label><b id="iInvV"></b></div>
+          <input type="range" id="iInv" min="1" max="8" step="1" value="3">
+          <span class="fh">Estimate. No published benchmark.</span></div>
+        <div class="field"><div class="row"><label for="iWin">Bid win rate</label><b id="iWinV"></b></div>
+          <input type="range" id="iWin" min="20" max="50" step="1" value="35">
+          <span class="fh">Benchmark: 30 to 40.</span></div>
+        <div class="field"><label for="iJob">Average job you win, $</label>
+          <input type="number" id="iJob" min="1000" step="500" value="40200">
+          <span class="fh">Default: average Saint Paul commercial alteration permit.</span></div>
+        <div class="field"><div class="row"><label for="iMar">Gross margin on a job</label><b id="iMarV"></b></div>
+          <input type="range" id="iMar" min="15" max="40" step="1" value="30">
+          <span class="fh">Benchmark: 25 to 35.</span></div>
+        <div class="field"><div class="row"><label for="iHrs">Hours a week on this plan</label><b id="iHrsV"></b></div>
+          <input type="range" id="iHrs" min="1" max="10" step="0.5" value="3"></div>
+        <div class="field"><label for="iRate">Value of an hour of your time, $</label>
+          <input type="number" id="iRate" min="20" step="5" value="75">
+          <span class="fh">Default: middle of the $55 to $120 burdened Minnesota range.</span></div>
+        <div class="field"><label for="iTool">Yearly cost of tools, $</label>
+          <input type="number" id="iTool" min="0" step="100" value="1999">
+          <span class="fh">Default: PlanHub Premier, 50 miles.</span></div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="out-line"><span class="ol">Emails sent<small>GCs x emails per GC</small></span><span class="ov" id="oEmail"></span></div>
+        <div class="out-line"><span class="ol">Meetings booked</span><span class="ov" id="oMeet"></span></div>
+        <div class="out-line"><span class="ol">New GC relationships<small>meetings that add you to a bid list</small></span><span class="ov" id="oRel"></span></div>
+        <div class="out-line"><span class="ol">Bids from those relationships</span><span class="ov" id="oBids"></span></div>
+        <div class="out-line"><span class="ol">Jobs won</span><span class="ov" id="oWins"></span></div>
+        <div class="out-line"><span class="ol">Revenue won<small id="oPct"></small></span><span class="ov" id="oRevWon"></span></div>
+        <div class="out-line"><span class="ol">Gross profit</span><span class="ov" id="oGp"></span></div>
+        <div class="out-line"><span class="ol">Cost of your time and tools<small id="oCostNote"></small></span><span class="ov" id="oCost"></span></div>
+        <div class="out-line"><span class="ol">Net after cost, year 1</span><span class="ov" id="oNet"></span></div>
+        <div class="out-line"><span class="ol">Wins needed to break even</span><span class="ov" id="oBE"></span></div>
+        <div class="out-line"><span class="ol">Year 2 gross profit from the same GCs<small>if the relationships hold and you pay tool cost only</small></span><span class="ov" id="oY2"></span></div>
+        <div class="verdict" id="oVerdict"></div>
+      </div>
+    </div>
+    <div class="bars" id="funnel" aria-label="Funnel from emails to wins" style="margin-top:14px"></div>
+  </section>
+
+  <!-- S4 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S4</span><h2 class="sheet-title">A Three-Hour Week</h2></div>
+    <p class="sheet-note">The calculator assumes about three hours a week. This is one way to spend them.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Day</th><th>Task</th><th class="num">Time</th></tr></thead>
+        <tbody>
+          <tr><td>Monday</td><td>Review new bid invitations. Update the bid log with results and price gaps.</td><td class="num">45 min</td></tr>
+          <tr><td>Tuesday</td><td>Check planning agendas. Add new commercial projects and their GCs to your list.</td><td class="num">30 min</td></tr>
+          <tr><td>Wednesday</td><td>Send outreach to 10 new GCs. Send the scheduled follow-ups to earlier GCs.</td><td class="num">60 min</td></tr>
+          <tr><td>Thursday</td><td>Follow up on open bids. Send qualification packets after any meetings.</td><td class="num">30 min</td></tr>
+          <tr><td>Friday</td><td>Update the scorecard in S6. Ask for reviews on jobs closed this week.</td><td class="num">15 min</td></tr>
+          <tr class="totalrow"><td>Total</td><td></td><td class="num">3 hr</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S5 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S5</span><h2 class="sheet-title">The First 90 Days</h2></div>
+    <p class="sheet-note">Nothing here has started. Each block is a proposal for you to review.</p>
+    <div class="phases">
+      <div class="proposed phase">
+        <div class="when">Days 1 to 30<b>Get ready</b></div>
+        <div><ul>
+          <li>Build a one-page qualifications sheet with credentials, three references and three project photos.</li>
+          <li>Build a list of 100 GCs that build commercial, industrial and school projects in your area.</li>
+          <li>Start the bid log. Record every bid from the last 12 months if you can.</li>
+          <li>Decide on a bid platform. Check what you already pay for first.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Days 31 to 60<b>Start outreach</b></div>
+        <div><ul>
+          <li>Contact 10 GCs a week with the four-touch sequence.</li>
+          <li>Send your qualifications packet within 24 hours of every meeting.</li>
+          <li>Start the weekly planning-agenda check.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Days 61 to 90<b>Measure and adjust</b></div>
+        <div><ul>
+          <li>Compare your results with the scorecard in S6.</li>
+          <li>Replace the calculator's estimates with your own reply rate, meeting rate, invitations and win rate.</li>
+          <li>Keep what works. Drop what does not. Decide whether to add paid help.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S6</span><h2 class="sheet-title">Scorecard</h2></div>
+    <p class="sheet-note">Check these monthly. A number outside the benchmark range points to the step that needs work.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Measure</th><th>Needs work</th><th>Benchmark range</th><th>Strong</th><th>If it is low</th></tr></thead>
+        <tbody>
+          <tr><td>Email reply rate</td><td class="num">Under 2%</td><td class="num">3 to 4%</td><td class="num">5 to 10%</td><td>Name a specific project or GC detail in the first line.</td></tr>
+          <tr><td>Meetings per 100 emails</td><td class="num">Under 1</td><td class="num">1 to 2</td><td class="num">3+</td><td>Make one clear ask: a 15-minute call about the next bid.</td></tr>
+          <tr><td>Bid win rate</td><td class="num">Under 25%</td><td class="num">30 to 40%</td><td class="num">Above 40% may mean low prices</td><td>Review price gaps. Skip job types you rarely win.</td></tr>
+          <tr><td>Gross margin on bid work</td><td class="num">Under 25%</td><td class="num">25 to 35%</td><td class="num">Above 35%</td><td>Check estimating and labor hours against actuals.</td></tr>
+          <tr><td>Bid invitations per new GC</td><td class="num">Under 2 a year</td><td class="num">Track it</td><td class="num">4+</td><td>Follow up after meetings. Ask what jobs they need priced.</td></tr>
+          <tr><td>Hours a week on the plan</td><td class="num">Under 1</td><td class="num">About 3</td><td class="num">Steady</td><td>Block the same time each week.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <h3 class="sub-h" style="margin-top:38px">How to read the labels</h3>
+  <div class="legend">
+    <div><span class="tag good">Public record</span> Pulled from a government source on 2026-09-20</div>
+    <div><span class="tag blue">Industry benchmark</span> Published range from an industry source</div>
+    <div><span class="tag warn">Estimate</span> No published benchmark. Replace it with your own result</div>
+    <div><span class="tag redline">Proposed</span> Not started (dashed red panels)</div>
+  </div>
+
+  <div class="foot">
+    Sources: MN Department of Labor and Industry electrical license export (2026-09-20) · Saint Paul Approved_Building_Permits, Jul 2024 to Jun 2025 · daley-electric.com · Hastings city planning pages · PlanHub pricing pages · published electrical contractor margin, win-rate and marketing-spend guides · published cold-email benchmarks.<br>
+    Benchmarks are national or industry-wide, not specific to Daley. Results depend on your crews' capacity, your prices and the market. This sheet does not guarantee any result.
+  </div>
+</div>
+<script>
+(function(){
+  var g=function(id){return document.getElementById(id)};
+  var fmtN=function(n){return Math.round(n).toLocaleString('en-US')};
+  var money=function(n){return (n<0?'-':'')+'$'+fmtN(Math.abs(n))};
+  var one=function(n){return (Math.round(n*10)/10).toFixed(1)};
+
+  var SCN={
+    cons:{gc:60,touch:4,meet:1,add:40,inv:2,win:30,job:20000,mar:25,hrs:3,rate:75,tool:0,
+      t:'Low end of every benchmark: 1% meeting rate, 30% win rate, a $20,000 average job.'},
+    exp:{gc:100,touch:4,meet:1.5,add:50,inv:3,win:35,job:40200,mar:30,hrs:3,rate:75,tool:1999,
+      t:'Middle of every benchmark: 1.5% meeting rate, 35% win rate, the $40,200 Saint Paul average job.'},
+    strong:{gc:120,touch:4,meet:2,add:60,inv:5,win:40,job:40200,mar:35,hrs:3,rate:75,tool:1999,
+      t:'High end of every benchmark: 2% meeting rate, 40% win rate, 5 invitations per GC.'}
+  };
+  var MAP={gc:'iGc',touch:'iTouch',meet:'iMeet',add:'iAdd',inv:'iInv',win:'iWin',job:'iJob',mar:'iMar',hrs:'iHrs',rate:'iRate',tool:'iTool'};
+
+  function load(key){
+    var s=SCN[key];
+    Object.keys(MAP).forEach(function(k){g(MAP[k]).value=s[k]});
+    g('scnHint').textContent=s.t;
+    calc();
+  }
+
+  function calc(){
+    var rev=+g('iRev').value, gc=+g('iGc').value, touch=+g('iTouch').value, meet=+g('iMeet').value/100,
+        add=+g('iAdd').value/100, inv=+g('iInv').value, win=+g('iWin').value/100,
+        job=Math.max(0,+g('iJob').value||0), mar=+g('iMar').value/100, hrs=+g('iHrs').value,
+        rate=Math.max(0,+g('iRate').value||0), tool=Math.max(0,+g('iTool').value||0);
+
+    g('iRevV').textContent=rev>=1e6?'$'+(rev/1e6)+'M':'$'+fmtN(rev);
+    g('iGcV').textContent=gc; g('iTouchV').textContent=touch;
+    g('iMeetV').textContent=meet*100; g('iAddV').textContent=Math.round(add*100)+'%';
+    g('iInvV').textContent=inv; g('iWinV').textContent=Math.round(win*100)+'%';
+    g('iMarV').textContent=Math.round(mar*100)+'%'; g('iHrsV').textContent=hrs;
+
+    var emails=gc*touch, meetings=emails*meet, rel=meetings*add, bids=rel*inv, wins=bids*win;
+    var revWon=wins*job, gp=revWon*mar, timeCost=hrs*50*rate, cost=timeCost+tool, net=gp-cost;
+    var perWin=job*mar, be=perWin>0?cost/perWin:0, y2=gp-tool;
+
+    g('oEmail').textContent=fmtN(emails);
+    g('oMeet').textContent=one(meetings);
+    g('oRel').textContent=one(rel);
+    g('oBids').textContent=one(bids);
+    g('oWins').textContent=one(wins);
+    g('oRevWon').textContent=money(revWon);
+    g('oPct').textContent=rev>0?one(revWon/rev*100)+'% of your annual revenue':'';
+    g('oGp').textContent=money(gp);
+    g('oCost').textContent=money(cost);
+    g('oCostNote').textContent=money(timeCost)+' of time ('+hrs+' h x 50 weeks) plus '+money(tool)+' of tools';
+    g('oNet').textContent=money(net);
+    g('oBE').textContent=one(be);
+    g('oY2').textContent=money(y2);
+
+    var v=g('oVerdict');
+    if(net>=0){
+      v.textContent='At these numbers the plan pays for its cost in year 1 and leaves about '+money(net)+'. It needs '+one(be)+' wins to break even.';
+      v.style.cssText='';
+    }else{
+      v.textContent='At these numbers the plan does not pay back in year 1. It needs '+one(be)+' wins and produces '+one(wins)+'. Raise the number of GCs contacted or improve the meeting rate first.';
+      v.style.cssText='border-color:var(--warn);background:var(--warn-tint);color:var(--warn)';
+    }
+
+    var stages=[['Emails',emails],['Meetings',meetings],['Relations',rel],['Bids',bids],['Wins',wins]];
+    var html='';
+    stages.forEach(function(s,i){
+      var pct=emails?Math.max(1.2,(Math.log10(s[1]+1)/Math.log10(emails+1))*100):0;
+      html+='<div class="bar-row"><span class="k">'+s[0]+'</span><div class="bar-track"><div class="bar-fill" style="width:'+pct.toFixed(1)+'%"></div></div><span class="v">'+(i===0?fmtN(s[1]):one(s[1]))+'</span></div>';
+    });
+    html+='<div class="bars-cap">Bar lengths use a log scale so small counts stay visible.</div>';
+    g('funnel').innerHTML=html;
+  }
+
+  document.querySelectorAll('input[name=scn]').forEach(function(r){r.addEventListener('change',function(){load(r.value)})});
+  Object.keys(MAP).concat(['iRev']).forEach(function(k){var id=MAP[k]||k;g(id).addEventListener('input',calc)});
+  load('exp');
+})();
+</script>
+
+</body>
+</html>

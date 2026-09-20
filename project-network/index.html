@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Project Network Field Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f2f4f5;
+    --paper-line:#c7d2d8;
+    --ink:#132635;
+    --ink-soft:#3d5164;
+    --blue:#1f5fa8;
+    --blue-deep:#123a66;
+    --blue-tint:#e4edf6;
+    --good:#3f6b4a;
+    --good-tint:#e7efe8;
+    --warn:#8a5a20;
+    --warn-tint:#f5ecdc;
+    --redline:#a13a2f;
+    --redline-tint:#f7e9e6;
+    --card:#ffffff;
+    --shadow:0 1px 2px rgba(19,38,53,.06),0 6px 20px rgba(19,38,53,.05);
+    --sans:'IBM Plex Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --cond:'IBM Plex Sans Condensed','IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+      --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+      --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+      --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+    --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+    --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+    --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background-color:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;
+    background-image:linear-gradient(var(--paper-line) 1px,transparent 1px),linear-gradient(90deg,var(--paper-line) 1px,transparent 1px);
+    background-size:28px 28px;background-attachment:local;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:28px 60px}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  /* title block */
+  .titleblock{background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto}
+  .titleblock-main{padding:22px 24px;border-right:1.5px solid var(--ink)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+  h1{font-family:var(--cond);font-weight:700;font-size:clamp(26px,4vw,36px);letter-spacing:.01em;margin:0 0 6px;text-wrap:balance}
+  .sub{color:var(--ink-soft);font-size:14.5px;max-width:58ch;margin:0}
+  .titleblock-meta{display:grid;grid-template-rows:repeat(4,1fr);font-family:var(--mono);font-size:11px}
+  .titleblock-meta div{padding:8px 16px;border-bottom:1px solid var(--paper-line);display:flex;flex-direction:column;gap:2px;min-width:170px}
+  .titleblock-meta div:last-child{border-bottom:none}
+  .titleblock-meta .k{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;font-size:9.5px}
+  .titleblock-meta .v{font-weight:500}
+
+  /* sheets */
+  .sheet{margin-top:38px}
+  .sheet-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+  .sheet-num{font-family:var(--mono);font-size:12px;color:var(--card);background:var(--blue-deep);padding:3px 8px;font-weight:600}
+  .sheet-title{font-family:var(--cond);font-weight:600;font-size:19px;margin:0;text-wrap:balance}
+  .sheet-note{color:var(--ink-soft);font-size:13px;margin:0 0 16px;max-width:72ch}
+  h3.sub-h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin:22px 0 8px}
+
+  /* tiles */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .tile{background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+  .tile .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:27px;color:var(--blue-deep);line-height:1}
+  .tile .lbl{font-size:12px;color:var(--ink-soft);line-height:1.35}
+  .tag{align-self:flex-start;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:2px;white-space:nowrap;display:inline-block}
+  .tag.good{background:var(--good-tint);color:var(--good)}
+  .tag.warn{background:var(--warn-tint);color:var(--warn)}
+  .tag.blue{background:var(--blue-tint);color:var(--blue)}
+  .tag.redline{background:var(--redline-tint);color:var(--redline);border:1px dashed var(--redline)}
+
+  /* proposed panels */
+  .proposed{border:1.5px dashed var(--redline);background:var(--redline-tint);padding:16px 18px}
+  .proposed .ptitle{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--redline);font-weight:600;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .proposed .ptitle::before{content:"\270E";font-size:13px}
+  .proposed p{margin:0 0 8px;font-size:13.5px}
+  .proposed p:last-child{margin-bottom:0}
+  .proposed ul{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:4px}
+  .stack{display:grid;gap:12px;margin-top:16px}
+
+  /* tables */
+  .table-scroll{overflow-x:auto;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;background:var(--card);font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--paper-line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;background:var(--blue-tint);white-space:nowrap}
+  td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  tr.totalrow td{font-weight:600;border-top:1.5px solid var(--ink);background:var(--blue-tint)}
+  td small{display:block;color:var(--ink-soft);font-size:11.5px;font-weight:400}
+  .dim{color:var(--ink-soft)}
+
+  /* scenario switch */
+  .seg{display:inline-flex;border:1.5px solid var(--ink);background:var(--card)}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;cursor:pointer;border-right:1px solid var(--paper-line)}
+  .seg label:last-of-type{border-right:none}
+  .seg input:checked+label{background:var(--blue-deep);color:var(--card)}
+  .seg input:focus-visible+label{outline:2px solid var(--blue);outline-offset:2px}
+  .controls{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-bottom:14px}
+  .controls .hint{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+
+  /* bars */
+  .bars{display:grid;gap:8px;margin-top:14px;background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px}
+  .bar-row{display:grid;grid-template-columns:96px 1fr 84px;gap:12px;align-items:center;font-size:12.5px}
+  .bar-row .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+  .bar-track{height:14px;background:var(--blue-tint);position:relative}
+  .bar-fill{height:100%;background:var(--blue);min-width:1px}
+  .bar-fill.off{background:transparent;border:1.5px dashed var(--redline)}
+  .bar-row .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-weight:500}
+  .bars-cap{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.04em}
+
+  /* calculator */
+  .calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow)}
+  .calc-in{padding:18px 20px;border-right:1.5px solid var(--ink);display:grid;gap:14px;align-content:start}
+  .calc-out{padding:18px 20px;display:grid;gap:12px;align-content:start;background:var(--blue-tint)}
+  .field{display:grid;gap:4px}
+  .field .row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+  .field .row b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;color:var(--blue-deep)}
+  .field .fh{font-size:11.5px;color:var(--ink-soft)}
+  input[type=range]{width:100%;accent-color:var(--blue)}
+  input[type=number]{width:100%;font:inherit;font-family:var(--mono);padding:6px 8px;border:1px solid var(--ink-soft);background:var(--card);color:var(--ink)}
+  .out-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--paper-line);padding-bottom:8px;font-size:13px}
+  .out-line:last-child{border-bottom:none;padding-bottom:0}
+  .out-line .ov{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:18px;color:var(--blue-deep);text-align:right}
+  .out-line .ol small{display:block;color:var(--ink-soft);font-size:11.5px}
+  .verdict{font-size:13.5px;font-weight:500;border:1.5px solid var(--good);background:var(--good-tint);color:var(--good);padding:10px 12px}
+
+  /* roadmap */
+  .phases{display:grid;gap:12px}
+  .phase{display:grid;grid-template-columns:150px 1fr;gap:16px}
+  .phase .when{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--redline);font-weight:600}
+  .phase .when b{display:block;font-family:var(--cond);font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--ink);margin-top:2px}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:8px}
+  .legend div{display:flex;gap:10px;align-items:baseline;font-size:12.5px;color:var(--ink-soft)}
+  .foot{margin-top:34px;padding-top:14px;border-top:1.5px solid var(--ink);font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.6}
+
+  @media (max-width:720px){
+    .titleblock{grid-template-columns:1fr}
+    .titleblock-main{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .titleblock-meta{grid-template-columns:1fr 1fr;grid-template-rows:none}
+    .calc{grid-template-columns:1fr}
+    .calc-in{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .phase{grid-template-columns:1fr;gap:4px}
+    .bar-row{grid-template-columns:70px 1fr 70px;gap:8px}
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <header class="titleblock">
+    <div class="titleblock-main">
+      <p class="eyebrow">Sightline · Field Sheet · Project Network</p>
+      <h1>Project Network: Who Builds a Twin Cities Project</h1>
+      <p class="sub">Every new project brings a design firm, a general contractor and several trades. This sheet counts the firms in each role, sizes what each could spend on an agent-run sales service, and compares ways to enter.</p>
+    </div>
+    <div class="titleblock-meta">
+      <div><span class="k">Prepared for</span><span class="v">Brad and Jon, internal</span></div>
+      <div><span class="k">Date</span><span class="v">2026-09-20</span></div>
+      <div><span class="k">Status</span><span class="v">Draft for review</span></div>
+      <div><span class="k">Scope</span><span class="v">Metro ZIP 550 / 551 / 553 / 554</span></div>
+    </div>
+  </header>
+
+  <!-- S1 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S1</span><h2 class="sheet-title">The Chain: Who Is Engaged When</h2></div>
+    <p class="sheet-note">One project passes through five stages in this order. Each stage has a public signal, and each role wants that signal earlier than it gets it today.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Stage</th><th>Who acts</th><th>Public signal</th><th>Roles that want to know</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Land</td><td>Owner buys a lot or a teardown house</td><td>County parcel sale feeds</td><td>Design firms, builders</td><td><span class="tag good">Verified</span></td></tr>
+          <tr><td>Filing</td><td>Owner or developer asks the city for approval</td><td>Planning agendas: plan amendments, rezoning, CUPs, site plans</td><td>Design firms, GCs</td><td><span class="tag warn">Prototype</span></td></tr>
+          <tr><td>Design and GC hire</td><td>Owner hires a design firm, then a GC</td><td>Rarely public</td><td>GCs, trades</td><td><span class="tag warn">Gap</span></td></tr>
+          <tr><td>Bid</td><td>GC invites trades to price the work</td><td>Bid platforms (PlanHub, ConstructConnect)</td><td>Trades</td><td><span class="tag blue">Sourced</span></td></tr>
+          <tr><td>Permit</td><td>Winning contractors pull permits</td><td>City permit feeds. Issue date only.</td><td>Nobody. The work is already won. Competitor intelligence only.</td><td><span class="tag good">Verified</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S2 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S2</span><h2 class="sheet-title">Site Data: Firms in Each Role</h2></div>
+    <p class="sheet-note">Trade counts come from the MN Department of Labor and Industry license exports, pulled 2026-09-20, status Issued, Minnesota business address, metro ZIP prefixes.</p>
+    <div class="tiles">
+      <div class="tile"><span class="n">1,051</span><span class="lbl">Class A electrical contractors</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">828</span><span class="lbl">Plumbing contractors (801 full, 27 restricted)</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">1,354</span><span class="lbl">Mechanical contractor bond holders. This is the state's HVAC contractor record.</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">2,638</span><span class="lbl">Distinct trade firms after removing overlap. 531 firms hold both plumbing and HVAC. Matched by exact name.</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">6,388</span><span class="lbl">Licensed residential building contractors. An upper bound: specialty trades and one-person firms hold this license too.</span><span class="tag warn">Needs filtering</span></div>
+      <div class="tile"><span class="n">None</span><span class="lbl">State list of commercial general contractors. Minnesota does not license them.</span><span class="tag redline">Gap</span></div>
+      <div class="tile"><span class="n">~250</span><span class="lbl">Architecture and design firms. No public firm list exists.</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">0</span><span class="lbl">Email addresses in the metro business records of these four DLI files. Phone numbers are filled in for nearly every record.</span><span class="tag good">Verified</span></div>
+    </div>
+
+    <h3 class="sub-h">Active builders, proxy: Saint Paul building permits, Jul 2024 to Jun 2025</h3>
+    <div class="tiles">
+      <div class="tile"><span class="n">171</span><span class="lbl">Different contractors pulled a New building permit (386 permits)</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">47%</span><span class="lbl">Share of New permits held by the ten busiest. New building is concentrated, unlike remodeling (17%).</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">17</span><span class="lbl">Contractors with 3 or more New permits. This is a short list of repeat builders.</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">23 / 20 / 9</span><span class="lbl">New or Addition permits for commercial, institutional and multifamily buildings. Single-family: 220.</span><span class="tag good">Verified</span></div>
+    </div>
+  </section>
+
+  <!-- S3 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S3</span><h2 class="sheet-title">Agent Wallet by Role</h2></div>
+    <p class="sheet-note">Same method as the electrical and design-firm sheets. The plumbing and HVAC revenue tiers copy the electrical tiers, which is an assumption. Pick a scenario.</p>
+
+    <div class="controls">
+      <div class="seg" role="radiogroup" aria-label="Spending scenario">
+        <input type="radio" name="scn" id="scnLow" value="low"><label for="scnLow">Low</label>
+        <input type="radio" name="scn" id="scnMid" value="mid" checked><label for="scnMid">Mid</label>
+        <input type="radio" name="scn" id="scnHigh" value="high"><label for="scnHigh">High</label>
+      </div>
+      <span class="hint" id="scnHint"></span>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Role</th><th class="num">Firms</th><th class="num">Target firms</th><th class="num">Wallet, all tiers</th><th class="num">Reachable wallet</th><th class="num">Reachable / target firm</th></tr></thead>
+        <tbody id="roleRows"></tbody>
+      </table>
+    </div>
+    <div class="bars" id="bars" aria-label="Reachable wallet by role"></div>
+
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">How to read this</p>
+        <ul>
+          <li>Target firms are small and mid tiers. Micro firms spend too little, and large firms run business development in-house.</li>
+          <li>Reachable wallet is the yearly spend those target firms would move to an agent-run service.</li>
+          <li>Trade rows add up to more than the distinct total, because a firm can hold two licenses. The distinct row removes that overlap by a flat 18%.</li>
+          <li>Plumbing and HVAC firms lean toward residential service work, which needs local marketing more than bid work. Bid and new-construction spend may be lower than these figures.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S4</span><h2 class="sheet-title">Four Ways to Enter</h2></div>
+    <p class="sheet-note">Customer counts apply the electrical base-case share of target firms (2.5%) and $20,000 a year per customer. This is a ceiling for planning, not a forecast. The design-firm rows use the 125 focus firms from doc 01, not the 173 firms in the S3 tiers, and their own base case.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Option</th><th class="num">Target firms</th><th class="num">Year 1 customers</th><th class="num">Year-end ARR</th><th class="num">Cold email alone</th><th>Sales motions</th></tr></thead>
+        <tbody>
+          <tr><td>A. Design firms only</td><td class="num">125</td><td class="num">10</td><td class="num">$150,000</td><td class="num">1 to 3</td><td>1</td></tr>
+          <tr><td>B. Electrical only</td><td class="num">599</td><td class="num">15</td><td class="num">$300,000</td><td class="num">6 to 12</td><td>1</td></tr>
+          <tr><td>C. Three trades: electrical, plumbing, HVAC</td><td class="num">1,503</td><td class="num">38</td><td class="num">$750,000</td><td class="num">15 to 30</td><td>1, trade-specific copy</td></tr>
+          <tr class="totalrow"><td>D. Project network: design firms plus three trades</td><td class="num">1,628</td><td class="num">48</td><td class="num">$900,000</td><td class="num">16 to 33</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tiles" style="margin-top:14px">
+      <div class="tile"><span class="n">15 to 30</span><span class="lbl">Customers cold email alone could win across three trades: 6,012 emails, 1 to 2% book meetings, 25% close. Electrical alone: 6 to 12.</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">Larger pool</span><span class="lbl">makes cold outreach workable. The 125-firm design pool cannot reach 10 customers by email alone.</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">1</span><span class="lbl">Sales motion covers all three trades. The pitch is the same: know the project and the GC before the bid.</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">Delivery</span><span class="lbl">is the real limit. Hours of review per customer are unknown. Measure them with the first three customers.</span><span class="tag redline">Proposed</span></div>
+    </div>
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">Reconciling with earlier sheets</p>
+        <p>The electrical sheet used 400 target firms for the cold email limit (4 to 8 customers). The DLI counts give 599 target firms, so this sheet shows 6 to 12. Use this figure from now on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S5</span><h2 class="sheet-title">A Live Example: Pleasant Valley Farms, Hastings</h2></div>
+    <p class="sheet-note">One current Hastings filing shows how a single project reaches every role. Details come from a Citizen Portal summary, not from the city packet. Check the packet before quoting it.</p>
+    <div class="tiles">
+      <div class="tile"><span class="n">166 acres</span><span class="lbl">Site brought into the city planning area</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">~400</span><span class="lbl">Homes planned, mostly single-family with some townhomes</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">2026-09-15</span><span class="lbl">Planning Commission voted to recommend the plan amendment. Council review set for 2026-09-21.</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">$3.8M to $8.6M</span><span class="lbl">Electrical work at about 2,400 sf a home and $4 to $9 a sf (national range). Plumbing and HVAC add more.</span><span class="tag warn">Assumption</span></div>
+    </div>
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">What each role would do with this record</p>
+        <ul>
+          <li>Design and land-planning firms: the plat and engineering come next. No developer is named yet, so the owner is the first contact.</li>
+          <li>Builders: lots are sold after the preliminary plat. The repeat builders in Hastings and Dakota County are the ones to call first.</li>
+          <li>Electrical, plumbing and HVAC firms: their work is probably more than a year away. That is early enough to meet the builder before any bid.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S6</span><h2 class="sheet-title">Recommendation and Open Items</h2></div>
+    <div class="phases">
+      <div class="proposed phase">
+        <div class="when">Share<b>One record, one engine</b></div>
+        <div><ul>
+          <li>One project record with fields for owner, design firm, GC, trades and stage.</li>
+          <li>One outreach engine: list building, enrichment, drafting and human approval.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Separate<b>One offer per role</b></div>
+        <div><ul>
+          <li>Design firms: projects with no architect yet.</li>
+          <li>Trades: projects with the GC named and a bid coming. One offer with copy for each trade.</li>
+          <li>Builders and GCs: projects and the trades who want them. Not tested.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Choose<b>The first buyer</b></div>
+        <div><ul>
+          <li>If planning filings lead bids by three months or more, start with the trades. The pool is 1,503 firms.</li>
+          <li>If they do not, start with design firms. The signal is earliest for them.</li>
+          <li>The trades win on pool size in either case, so the three-trade motion is the stronger default.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Open<b>Not yet known</b></div>
+        <div><ul>
+          <li>Back-test of planning agendas: not complete. The Hastings meeting calendar refused automated access (HTTP 403). Agendas need to be read from city PDFs or by hand.</li>
+          <li>Size of the commercial GC pool: no state list. The Saint Paul permit proxy shows 171 active new-build contractors in one city.</li>
+          <li>Revenue per firm for plumbing and HVAC: copied from electrical.</li>
+          <li>Gate before promising anything: five qualified customers per role and two paid pilots.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <h3 class="sub-h" style="margin-top:38px">Status labels</h3>
+  <div class="legend">
+    <div><span class="tag good">Verified</span> Pulled from a public source on 2026-09-20</div>
+    <div><span class="tag blue">Sourced</span> From a web source, not independently checked</div>
+    <div><span class="tag warn">Assumption</span> Planning number, change it if you know better</div>
+    <div><span class="tag redline">Proposed</span> Not built, not known, or not decided (dashed red)</div>
+  </div>
+
+  <div class="foot">
+    Sources: MN DLI license exports for Electrical, Plumbing, Mechanical Contractor Bond and Residential Contractors (2026-09-20) · Saint Paul Approved_Building_Permits, Jul 2024 to Jun 2025 · Citizen Portal summary of the Hastings Planning Commission item · AIA Firm Survey 2024 · industry marketing-spend and pricing guides.<br>
+    Related: Sightline AEC Track docs 05 and 05a, the Daley Electric field sheet, and the AEC design-firm sheet. AEC is not a chosen lane. This sheet is field research, not a decision.
+  </div>
+</div>
+<script>
+(function(){
+  var fmtM=function(n){
+    if(n>=1e9) return '$'+(n/1e9).toFixed(1)+'B';
+    if(n>=1e6) return '$'+(n/1e6).toFixed(n>=1e7?0:1).replace(/\.0$/,'')+'M';
+    if(n>=1e3) return '$'+(n/1e3).toFixed(n>=1e5?0:1).replace(/\.0$/,'')+'k';
+    return '$'+Math.round(n);
+  };
+  var fmtN=function(n){return Math.round(n).toLocaleString('en-US')};
+
+  var TRADE=[{s:.40,rev:.5e6,ih:false},{s:.42,rev:2e6,ih:false},{s:.15,rev:7e6,ih:false},{s:.03,rev:30e6,ih:true}];
+  var DESIGN=[{s:.28,rev:.15e6,ih:false},{s:.32,rev:.5e6,ih:false},{s:.152,rev:1.2e6,ih:false},{s:.22,rev:6e6,ih:false},{s:.028,rev:60e6,ih:true}];
+  var ROLES=[
+    {k:'Electrical',n:1051,t:TRADE,trade:true},
+    {k:'Plumbing',n:828,t:TRADE,trade:true},
+    {k:'HVAC',n:1354,t:TRADE,trade:true},
+    {k:'Design firms',n:250,t:DESIGN,trade:false}
+  ];
+  var SCN={low:{m:.015,s:.15,dm:.03,t:'Trades: marketing 1.5% of revenue, 15% to an agent service. Design firms: 3% of revenue.'},
+           mid:{m:.025,s:.25,dm:.05,t:'Trades: marketing 2.5% of revenue, 25% to an agent service. Design firms: 5% of revenue.'},
+           high:{m:.04,s:.35,dm:.07,t:'Trades: marketing 4% of revenue, 35% to an agent service. Design firms: 7% of revenue.'}};
+  var FLOOR=6000, DISTINCT=2638/3233;
+
+  function calc(role,sc){
+    var m=role.trade?sc.m:sc.dm, tot=0,sam=0,samF=0;
+    role.t.forEach(function(t){
+      var f=role.n*t.s, w=t.rev*m*sc.s, tw=f*w;
+      tot+=tw;
+      if(!t.ih && w>=FLOOR){sam+=tw;samF+=f}
+    });
+    return {tot:tot,sam:sam,samF:samF};
+  }
+
+  function render(){
+    var key=document.querySelector('input[name=scn]:checked').value, sc=SCN[key];
+    document.getElementById('scnHint').textContent=sc.t+' Minimum worth serving: $6,000 a year.';
+    var rows='',bars='',res=ROLES.map(function(r){return {r:r,c:calc(r,sc)}});
+    var tradeSum={n:0,samF:0,tot:0,sam:0}, maxSam=0;
+    res.forEach(function(x){
+      if(x.r.trade){tradeSum.n+=x.r.n;tradeSum.samF+=x.c.samF;tradeSum.tot+=x.c.tot;tradeSum.sam+=x.c.sam}
+    });
+    var dist={n:2638,samF:tradeSum.samF*DISTINCT,tot:tradeSum.tot*DISTINCT,sam:tradeSum.sam*DISTINCT};
+    var design=res[3].c;
+    var tr=function(label,n,samF,tot,sam,cls){
+      return '<tr'+(cls?' class="'+cls+'"':'')+'><td>'+label+'</td><td class="num">'+fmtN(n)+'</td><td class="num">'+fmtN(samF)+'</td><td class="num">'+fmtM(tot)+'</td><td class="num">'+fmtM(sam)+'</td><td class="num">'+(samF?'$'+fmtN(sam/samF):'n/a')+'</td></tr>';
+    };
+    res.slice(0,3).forEach(function(x){rows+=tr(x.r.k,x.r.n,x.c.samF,x.c.tot,x.c.sam)});
+    rows+=tr('Trades, distinct firms (overlap removed)',dist.n,dist.samF,dist.tot,dist.sam,'totalrow');
+    rows+=tr('Design firms',250,design.samF,design.tot,design.sam);
+    rows+=tr('All roles, distinct',dist.n+250,dist.samF+design.samF,dist.tot+design.tot,dist.sam+design.sam,'totalrow');
+    document.getElementById('roleRows').innerHTML=rows;
+
+    var items=[['Electrical',res[0].c.sam],['Plumbing',res[1].c.sam],['HVAC',res[2].c.sam],['Design',design.sam]];
+    items.forEach(function(i){if(i[1]>maxSam)maxSam=i[1]});
+    items.forEach(function(i){
+      bars+='<div class="bar-row"><span class="k">'+i[0]+'</span><div class="bar-track"><div class="bar-fill" style="width:'+Math.max(1,i[1]/maxSam*100).toFixed(1)+'%"></div></div><span class="v">'+fmtM(i[1])+'</span></div>';
+    });
+    bars+='<div class="bars-cap">Reachable yearly wallet by role, before removing trade overlap.</div>';
+    document.getElementById('bars').innerHTML=bars;
+  }
+  document.querySelectorAll('input[name=scn]').forEach(function(r){r.addEventListener('change',render)});
+  render();
+})();
+</script>
+
+</body>
+</html>

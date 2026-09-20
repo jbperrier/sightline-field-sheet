@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AEC Design Firms Field Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f2f4f5;
+    --paper-line:#c7d2d8;
+    --ink:#132635;
+    --ink-soft:#3d5164;
+    --blue:#1f5fa8;
+    --blue-deep:#123a66;
+    --blue-tint:#e4edf6;
+    --good:#3f6b4a;
+    --good-tint:#e7efe8;
+    --warn:#8a5a20;
+    --warn-tint:#f5ecdc;
+    --redline:#a13a2f;
+    --redline-tint:#f7e9e6;
+    --card:#ffffff;
+    --shadow:0 1px 2px rgba(19,38,53,.06),0 6px 20px rgba(19,38,53,.05);
+    --sans:'IBM Plex Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --cond:'IBM Plex Sans Condensed','IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+      --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+      --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+      --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101820;--paper-line:#28353f;--ink:#e7edf1;--ink-soft:#a9bac6;
+    --blue:#5b9bdb;--blue-deep:#8fc0ee;--blue-tint:#152838;
+    --good:#8fc79b;--good-tint:#132a1c;--warn:#d9ab6b;--warn-tint:#2b2213;
+    --redline:#e29088;--redline-tint:#2c1815;--card:#17212a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background-color:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;
+    background-image:linear-gradient(var(--paper-line) 1px,transparent 1px),linear-gradient(90deg,var(--paper-line) 1px,transparent 1px);
+    background-size:28px 28px;background-attachment:local;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:28px 60px}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+  /* title block */
+  .titleblock{background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto}
+  .titleblock-main{padding:22px 24px;border-right:1.5px solid var(--ink)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+  h1{font-family:var(--cond);font-weight:700;font-size:clamp(26px,4vw,36px);letter-spacing:.01em;margin:0 0 6px;text-wrap:balance}
+  .sub{color:var(--ink-soft);font-size:14.5px;max-width:58ch;margin:0}
+  .titleblock-meta{display:grid;grid-template-rows:repeat(4,1fr);font-family:var(--mono);font-size:11px}
+  .titleblock-meta div{padding:8px 16px;border-bottom:1px solid var(--paper-line);display:flex;flex-direction:column;gap:2px;min-width:170px}
+  .titleblock-meta div:last-child{border-bottom:none}
+  .titleblock-meta .k{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;font-size:9.5px}
+  .titleblock-meta .v{font-weight:500}
+
+  /* sheets */
+  .sheet{margin-top:38px}
+  .sheet-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+  .sheet-num{font-family:var(--mono);font-size:12px;color:var(--card);background:var(--blue-deep);padding:3px 8px;font-weight:600}
+  .sheet-title{font-family:var(--cond);font-weight:600;font-size:19px;margin:0;text-wrap:balance}
+  .sheet-note{color:var(--ink-soft);font-size:13px;margin:0 0 16px;max-width:72ch}
+  h3.sub-h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin:22px 0 8px}
+
+  /* tiles */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .tile{background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+  .tile .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:27px;color:var(--blue-deep);line-height:1}
+  .tile .lbl{font-size:12px;color:var(--ink-soft);line-height:1.35}
+  .tag{align-self:flex-start;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:2px;white-space:nowrap;display:inline-block}
+  .tag.good{background:var(--good-tint);color:var(--good)}
+  .tag.warn{background:var(--warn-tint);color:var(--warn)}
+  .tag.blue{background:var(--blue-tint);color:var(--blue)}
+  .tag.redline{background:var(--redline-tint);color:var(--redline);border:1px dashed var(--redline)}
+
+  /* proposed panels */
+  .proposed{border:1.5px dashed var(--redline);background:var(--redline-tint);padding:16px 18px}
+  .proposed .ptitle{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--redline);font-weight:600;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .proposed .ptitle::before{content:"\270E";font-size:13px}
+  .proposed p{margin:0 0 8px;font-size:13.5px}
+  .proposed p:last-child{margin-bottom:0}
+  .proposed ul{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:4px}
+  .stack{display:grid;gap:12px;margin-top:16px}
+
+  /* tables */
+  .table-scroll{overflow-x:auto;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;background:var(--card);font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--paper-line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);font-weight:500;background:var(--blue-tint);white-space:nowrap}
+  td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  tr.totalrow td{font-weight:600;border-top:1.5px solid var(--ink);background:var(--blue-tint)}
+  td small{display:block;color:var(--ink-soft);font-size:11.5px;font-weight:400}
+  .dim{color:var(--ink-soft)}
+
+  /* scenario switch */
+  .seg{display:inline-flex;border:1.5px solid var(--ink);background:var(--card)}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;cursor:pointer;border-right:1px solid var(--paper-line)}
+  .seg label:last-of-type{border-right:none}
+  .seg input:checked+label{background:var(--blue-deep);color:var(--card)}
+  .seg input:focus-visible+label{outline:2px solid var(--blue);outline-offset:2px}
+  .controls{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-bottom:14px}
+  .controls .hint{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+
+  /* bars */
+  .bars{display:grid;gap:8px;margin-top:14px;background:var(--card);border:1px solid var(--paper-line);box-shadow:var(--shadow);padding:14px 16px}
+  .bar-row{display:grid;grid-template-columns:96px 1fr 84px;gap:12px;align-items:center;font-size:12.5px}
+  .bar-row .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+  .bar-track{height:14px;background:var(--blue-tint);position:relative}
+  .bar-fill{height:100%;background:var(--blue);min-width:1px}
+  .bar-fill.off{background:transparent;border:1.5px dashed var(--redline)}
+  .bar-row .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-weight:500}
+  .bars-cap{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.04em}
+
+  /* calculator */
+  .calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow)}
+  .calc-in{padding:18px 20px;border-right:1.5px solid var(--ink);display:grid;gap:14px;align-content:start}
+  .calc-out{padding:18px 20px;display:grid;gap:12px;align-content:start;background:var(--blue-tint)}
+  .field{display:grid;gap:4px}
+  .field .row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+  .field .row b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;color:var(--blue-deep)}
+  .field .fh{font-size:11.5px;color:var(--ink-soft)}
+  input[type=range]{width:100%;accent-color:var(--blue)}
+  input[type=number]{width:100%;font:inherit;font-family:var(--mono);padding:6px 8px;border:1px solid var(--ink-soft);background:var(--card);color:var(--ink)}
+  .out-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--paper-line);padding-bottom:8px;font-size:13px}
+  .out-line:last-child{border-bottom:none;padding-bottom:0}
+  .out-line .ov{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:18px;color:var(--blue-deep);text-align:right}
+  .out-line .ol small{display:block;color:var(--ink-soft);font-size:11.5px}
+  .verdict{font-size:13.5px;font-weight:500;border:1.5px solid var(--good);background:var(--good-tint);color:var(--good);padding:10px 12px}
+
+  /* roadmap */
+  .phases{display:grid;gap:12px}
+  .phase{display:grid;grid-template-columns:150px 1fr;gap:16px}
+  .phase .when{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--redline);font-weight:600}
+  .phase .when b{display:block;font-family:var(--cond);font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--ink);margin-top:2px}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:8px}
+  .legend div{display:flex;gap:10px;align-items:baseline;font-size:12.5px;color:var(--ink-soft)}
+  .foot{margin-top:34px;padding-top:14px;border-top:1.5px solid var(--ink);font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.6}
+
+  @media (max-width:720px){
+    .titleblock{grid-template-columns:1fr}
+    .titleblock-main{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .titleblock-meta{grid-template-columns:1fr 1fr;grid-template-rows:none}
+    .calc{grid-template-columns:1fr}
+    .calc-in{border-right:none;border-bottom:1.5px solid var(--ink)}
+    .phase{grid-template-columns:1fr;gap:4px}
+    .bar-row{grid-template-columns:70px 1fr 70px;gap:8px}
+  }
+</style>
+
+<style>
+  table.act th:nth-child(2),table.act td:nth-child(2){min-width:260px}
+  table.act th:nth-child(4),table.act td:nth-child(4),table.act th:nth-child(5),table.act td:nth-child(5){min-width:190px}
+  table.act td .tag{margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="titleblock">
+    <div class="titleblock-main">
+      <p class="eyebrow">Sightline · Field Sheet · Design Firms</p>
+      <h1>AEC Design Firms: Twin Cities Market</h1>
+      <p class="sub">How many architecture and design firms work in the metro, what they earn, what they spend to win projects, and what a services-as-software program is worth to them. Same method as the electrical sheet.</p>
+    </div>
+    <div class="titleblock-meta">
+      <div><span class="k">Prepared for</span><span class="v">Brad and Jon, internal</span></div>
+      <div><span class="k">Date</span><span class="v">2026-09-20</span></div>
+      <div><span class="k">Status</span><span class="v">Draft for review</span></div>
+      <div><span class="k">Scope</span><span class="v">Twin Cities metro, design side</span></div>
+    </div>
+  </header>
+
+  <!-- S1 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S1</span><h2 class="sheet-title">Site Data: Firms and Project Signals</h2></div>
+    <p class="sheet-note">Two kinds of number sit here. Firm counts are estimates, because no public file lists design firms. Project signals come from county parcel feeds and are verified.</p>
+    <div class="tiles">
+      <div class="tile"><span class="n">~250</span><span class="lbl">Architecture and design firms in the metro. Range 200 to 350. Derived from about 19,000 US firms and metro population share.</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">100 to 150</span><span class="lbl">Firms that fit the residential and small commercial focus (doc 01). Not the 1,400+ on Houzz.</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">28% / 32% / 15%</span><span class="lbl">US firms that are sole practitioners, 2 to 4 people, and 5 to 9 people. About 75% have under 10 people.</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">$104.1B</span><span class="lbl">Gross billings of all US architecture firms (AIA Firm Survey). About $5.5M a firm, pulled up by very large firms.</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">62</span><span class="lbl">Vacant residential lots sold in Saint Paul, 12 months (field sheet, 2026-09-18)</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">78</span><span class="lbl">Vacant residential lots sold in Minneapolis, 12 months</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">43</span><span class="lbl">Saint Paul teardown candidates (pre-1955, land at least 80% of building value)</span><span class="tag good">Verified</span></div>
+      <div class="tile"><span class="n">35</span><span class="lbl">Vacant lot sales county-wide in Dakota County, 12 months. Hastings: 1.</span><span class="tag good">Verified</span></div>
+    </div>
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">No firm list exists to download</p>
+        <p>The MN Board of Architecture lookup finds a person by name. It does not list firms, and firm registrations are only available by request to the Board. That leaves a gap the electrical track does not have, because the DLI publishes a full contractor export.</p>
+        <p>The firm count above uses AIA size shares and population. Check it against Board records before quoting it to anyone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S2</span><h2 class="sheet-title">Signal Check: What Finds a Design Client</h2></div>
+    <p class="sheet-note">A design firm needs the signal before an architect is hired. That is earlier than permits or bids.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Signal</th><th>What the data shows</th><th>Use for a design firm</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Issued permits</td><td>No application date in Saint Paul or Minneapolis. An architect is usually hired long before a permit issues.</td><td>Too late for lead generation. Useful for competitor mapping.</td><td><span class="tag good">Verified</span></td></tr>
+          <tr><td>Vacant lot sold</td><td>62 in Saint Paul, 78 in Minneapolis. About half of buyers are entities (builders). Owner mailing addresses are on every record.</td><td>Best early signal for residential. Individual buyers are the design firm's opportunity.</td><td><span class="tag good">Verified</span></td></tr>
+          <tr><td>Teardown candidate</td><td>43 in Saint Paul. The Minneapolis version over-flags lake-district homes (815) and needs recalibration.</td><td>Works in Saint Paul. Do not use in Minneapolis yet.</td><td><span class="tag warn">Needs recalibration</span></td></tr>
+          <tr><td>Planning filings: CUPs, rezoning, site plan review</td><td>Public agendas. The Saint Paul prototype feed lists 10 projects at stages from Pre-design to Permitted, each tagged architect engaged or not.</td><td>Best signal for commercial and multifamily. Coverage per city is the effort.</td><td><span class="tag warn">Prototype</span></td></tr>
+          <tr><td>Listed lots and listing agent</td><td>Needs Northstar MLS access. Not in county data.</td><td>Unlocks realtor outreach. A purchase, not a build.</td><td><span class="tag redline">Proposed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S3 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S3</span><h2 class="sheet-title">Who the ~250 Are: Revenue, Marketing Spend, Agent Wallet</h2></div>
+    <p class="sheet-note">Tier sizes follow the AIA size shares. Revenue per tier is an estimate. Pick a spending scenario to see the wallet move.</p>
+
+    <div class="controls">
+      <div class="seg" role="radiogroup" aria-label="Spending scenario">
+        <input type="radio" name="scn" id="scnLow" value="low"><label for="scnLow">Low</label>
+        <input type="radio" name="scn" id="scnMid" value="mid" checked><label for="scnMid">Mid</label>
+        <input type="radio" name="scn" id="scnHigh" value="high"><label for="scnHigh">High</label>
+      </div>
+      <span class="hint" id="scnHint"></span>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr>
+          <th>Tier</th><th class="num">Firms</th><th class="num">Avg revenue</th><th class="num">Marketing / firm</th><th class="num">Agent wallet / firm</th><th class="num">Agent wallet, tier</th><th>Fit</th>
+        </tr></thead>
+        <tbody id="tierRows"></tbody>
+      </table>
+    </div>
+
+    <div class="bars" id="bars" aria-label="Agent wallet by tier"></div>
+    <div class="tiles" style="margin-top:14px" id="s3tiles"></div>
+
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">How these numbers are built</p>
+        <ul>
+          <li>Firm count: about 19,000 US firms times the metro's roughly 1.1% population share, raised by about 20% because the Twin Cities has many design firms. Both steps are my assumptions.</li>
+          <li>Tier split: AIA reports 28% sole, 32% with 2 to 4, 15% with 5 to 9. I split the remaining 25% into 22% (10 to 49) and 3% (50 or more).</li>
+          <li>Revenue per tier: $0.15M, $0.5M, $1.2M, $6M and $60M. My estimates. The total of about $0.85B compares with about $1.15B from spreading US billings by population.</li>
+          <li>Marketing share: PSMJ reports 3.1 to 5.3% of net service revenue. The AIA 2024 Firm Survey reports an average of 6%. The scenarios use 3%, 5% and 7%. Residential-focused firms run higher than institutional ones.</li>
+          <li>Agent wallet: 15%, 25% or 35% of marketing spend moved to an agent-run service. A tier below $6,000 a year is not worth serving. Firms with 50 or more people run business development in-house.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S4</span><h2 class="sheet-title">Design Firm Payback Calculator</h2></div>
+    <p class="sheet-note">A small residential and light commercial firm. The fee per job follows doc 03: a $750,000 project at 5 to 11%, so about $60,000 at the middle.</p>
+
+    <div class="calc">
+      <div class="calc-in">
+        <div class="field">
+          <div class="row"><label for="cRev">Annual revenue</label><b id="cRevV"></b></div>
+          <input type="range" id="cRev" min="150000" max="6000000" step="50000" value="600000">
+        </div>
+        <div class="field">
+          <div class="row"><label for="cMkt">Marketing and business development, % of revenue</label><b id="cMktV"></b></div>
+          <input type="range" id="cMkt" min="1" max="10" step="0.5" value="5">
+        </div>
+        <div class="field">
+          <div class="row"><label for="cShift">Share moved to an agent-run service</label><b id="cShiftV"></b></div>
+          <input type="range" id="cShift" min="5" max="50" step="5" value="25">
+        </div>
+        <div class="field">
+          <div class="row"><label for="cJob">Fee per new job, $</label></div>
+          <input type="number" id="cJob" min="1000" step="1000" value="60000">
+          <span class="fh">Default: 8% of a $750,000 project.</span>
+        </div>
+        <div class="field">
+          <div class="row"><label for="cMargin">Contribution margin on a job</label><b id="cMarginV"></b></div>
+          <input type="range" id="cMargin" min="20" max="60" step="1" value="40">
+          <span class="fh">Assumption. AIA reports average net profit of 11.5% after overhead.</span>
+        </div>
+        <div class="field">
+          <div class="row"><label for="cClose">Close rate on a warm meeting</label><b id="cCloseV"></b></div>
+          <input type="range" id="cClose" min="20" max="60" step="5" value="45">
+          <span class="fh">Doc 03 used 40 to 50%.</span>
+        </div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="out-line"><span class="ol">Marketing budget<small>revenue x marketing %</small></span><span class="ov" id="oBudget"></span></div>
+        <div class="out-line"><span class="ol">Agent service spend<small id="oPerMo"></small></span><span class="ov" id="oAgent"></span></div>
+        <div class="out-line"><span class="ol">Contribution per new job<small>fee x margin</small></span><span class="ov" id="oGP"></span></div>
+        <div class="out-line"><span class="ol">Extra jobs to break even</span><span class="ov" id="oJobs"></span></div>
+        <div class="out-line"><span class="ol">Extra meetings needed<small>at the close rate above</small></span><span class="ov" id="oMeet"></span></div>
+        <div class="verdict" id="oVerdict"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S5</span><h2 class="sheet-title">Year 1 Revenue Ramp: Services-as-Software</h2></div>
+    <p class="sheet-note">Vendor revenue from selling the program to metro design firms. The pool is 125 target firms, the middle of the 100 to 150 in doc 01. Pricing is above the $500 a month software price in doc 01 because the agents run the work.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Case</th><th class="num">Customers, month 12</th><th class="num">Blended price / mo</th><th class="num">Customer-months</th><th class="num">Year 1 revenue</th><th class="num">Year-end ARR</th><th class="num">Share of 125 target firms</th></tr></thead>
+        <tbody>
+          <tr><td>Low</td><td class="num">5</td><td class="num">$800</td><td class="num">36</td><td class="num">$28,800</td><td class="num">$48,000</td><td class="num">4%</td></tr>
+          <tr><td>Base<small>2-to-4 person firms at $1,000, 5-to-9 at $2,000</small></td><td class="num">10</td><td class="num">$1,250</td><td class="num">66</td><td class="num">$82,500</td><td class="num">$150,000</td><td class="num">8%</td></tr>
+          <tr><td>High</td><td class="num">15</td><td class="num">$1,500</td><td class="num">94</td><td class="num">$141,000</td><td class="num">$270,000</td><td class="num">12%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tiles" style="margin-top:14px">
+      <div class="tile"><span class="n">125</span><span class="lbl">Target firms. The electrical pool is 599, nearly five times larger.</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">$12.5k</span><span class="lbl">Monthly recurring revenue at month 12, base case</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">2.2x</span><span class="lbl">Base ARR against the $69,000 midpoint of doc 01's software-only range ($48,000 to $90,000)</span><span class="tag warn">Assumption</span></div>
+      <div class="tile"><span class="n">1 to 3</span><span class="lbl">Customers cold email alone can win: 500 emails, 1 to 2% book meetings, 25% close</span><span class="tag warn">Assumption</span></div>
+    </div>
+
+    <div class="stack">
+      <div class="proposed">
+        <p class="ptitle">Limits on this ramp</p>
+        <p>The pool is small. Every customer is 0.8% of it, so reaching 10 customers takes warm introductions: David, AIA Minnesota chapter events, and referrals from builders and realtors.</p>
+        <p>Delivery cost is not modeled. Personal, property-specific outreach drove David's 10% direct-mail response. A generic version would fall to 1.4 to 2.1%. The service must keep the personal quality, which costs review time.</p>
+        <p>Architect firms adopt AI slowly: 72% of small firms are reluctant to use it in daily work (AIA 2024). A managed service suits them better than software, which is the point of this model.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S6</span><h2 class="sheet-title">Price Anchors and Channel Benchmarks</h2></div>
+    <p class="sheet-note">Prices come from vendor pages and comparison sites, not quotes.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Option</th><th>What it costs</th><th>What it does not do</th></tr></thead>
+        <tbody>
+          <tr><td>PropStream, BatchLeads</td><td class="num">$99 to $197 a month</td><td>Owner lists and skip-trace. No pre-permit municipal signals. No "architect not engaged" flag.</td></tr>
+          <tr><td>Northstar MLS access</td><td class="num">Paid, licensed</td><td>Gives listed lots and listing agents. No project signals.</td></tr>
+          <tr><td>Houzz Pro</td><td class="num">Flat subscription</td><td>Lead marketplace. Effective cost per lead unknown.</td></tr>
+          <tr><td>Local marketing retainer</td><td class="num">$2,500 to $5,000 a month</td><td>Search, reviews and ads. Ad spend is extra.</td></tr>
+          <tr><td>Lead generation agency</td><td class="num">$3,000 to $25,000 a month</td><td>Generic prospecting. No project data.</td></tr>
+          <tr class="totalrow"><td>Proposed program</td><td class="num">$1,000 to $2,000 a month</td><td>Agents find projects with no architect, research contacts, and draft personal outreach.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tiles" style="margin-top:14px">
+      <div class="tile"><span class="n">10%</span><span class="lbl">David's direct-mail response with property-specific handwritten notes</span><span class="tag warn">One source</span></div>
+      <div class="tile"><span class="n">1.4 to 2.1%</span><span class="lbl">Filtered-list direct mail response. Handwritten benchmark: 3 to 7%.</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">3.4%</span><span class="lbl">Average cold-email reply. 1 to 2% book meetings.</span><span class="tag blue">Sourced</span></div>
+      <div class="tile"><span class="n">$34</span><span class="lbl">Meta cost per lead for home services. Google search click: $8.33.</span><span class="tag blue">Sourced</span></div>
+    </div>
+  </section>
+
+  <!-- S7 -->
+  <section class="sheet">
+    <div class="sheet-head"><span class="sheet-num">S7</span><h2 class="sheet-title">Phased Implementation Roadmap</h2></div>
+    <p class="sheet-note">Nothing here is built or bought. Each phase is a proposal for selling to design firms.</p>
+    <div class="phases">
+      <div class="proposed phase">
+        <div class="when">Month 1<b>Foundation</b></div>
+        <div><ul>
+          <li>Ask the Board of Architecture for firm registrations, or build the list from AIA Minnesota and Houzz plus manual checks.</li>
+          <li>Interview 5 design firms beyond David: how leads arrive, what they pay for, what they would pay.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Months 1 to 2<b>Data</b></div>
+        <div><ul>
+          <li>Run the county feeds weekly: vacant lots, teardown candidates, planning filings.</li>
+          <li>Decide on Northstar MLS access for listed lots and listing agents.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Month 2 on<b>Sales to firms</b></div>
+        <div><ul>
+          <li>Warm introductions first: David, AIA Minnesota events, builder and realtor referrals.</li>
+          <li>Cold email to the 100 to 150 target firms. Expect 1 to 3 customers from it.</li>
+        </ul></div>
+      </div>
+      <div class="proposed phase">
+        <div class="when">Ongoing<b>Feedback loop</b></div>
+        <div><ul>
+          <li>Track meetings booked and jobs won per customer by signal source.</li>
+          <li>Measure review hours per customer to set the price.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <h3 class="sub-h" style="margin-top:38px">Status labels</h3>
+  <div class="legend">
+    <div><span class="tag good">Verified</span> Pulled from a public source</div>
+    <div><span class="tag blue">Sourced</span> From a web source, not independently checked</div>
+    <div><span class="tag warn">Assumption</span> Planning number, change it if you know better</div>
+    <div><span class="tag redline">Proposed</span> Not yet built or bought (dashed red panels)</div>
+  </div>
+
+  <div class="foot">
+    Sources: Saint Paul and Minneapolis field sheet (2026-09-18) · Ramsey, Hennepin and Dakota County parcel feeds · AIA Firm Survey Report 2024 and Architecture Billings Index · PSMJ marketing spend survey · MN Board of AELSLAGID lookup page · PropStream, BatchLeads, Houzz and agency pricing guides.<br>
+    Related: Sightline AEC Track docs 01 to 05a. AEC is not a chosen lane. This sheet is field research, not a decision.
+  </div>
+</div>
+<script>
+(function(){
+  var fmtM=function(n){
+    if(n>=1e9) return '$'+(n/1e9).toFixed(1)+'B';
+    if(n>=1e6) return '$'+(n/1e6).toFixed(n>=1e7?0:1).replace(/\.0$/,'')+'M';
+    if(n>=1e3) return '$'+(n/1e3).toFixed(n>=1e5?0:1).replace(/\.0$/,'')+'k';
+    return '$'+Math.round(n);
+  };
+  var fmtN=function(n){return Math.round(n).toLocaleString('en-US')};
+  var money=function(n){return '$'+fmtN(n)};
+
+  var TIERS=[
+    {k:'Sole practitioner',staff:'1 person',firms:70,rev:0.15e6,inhouse:false},
+    {k:'Small',staff:'2 to 4 people',firms:80,rev:0.5e6,inhouse:false},
+    {k:'Small-mid',staff:'5 to 9 people',firms:38,rev:1.2e6,inhouse:false},
+    {k:'Mid',staff:'10 to 49 people, often has marketing staff',firms:55,rev:6e6,inhouse:false},
+    {k:'Large',staff:'50+ people',firms:7,rev:60e6,inhouse:true}
+  ];
+  var SCN={low:{m:.03,s:.15,t:'Marketing 3% of revenue (PSMJ low end), 15% of it to an agent service'},
+           mid:{m:.05,s:.25,t:'Marketing 5% of revenue (PSMJ high end), 25% of it to an agent service'},
+           high:{m:.07,s:.35,t:'Marketing 7% of revenue (near the AIA 2024 average of 6%), 35% of it to an agent service'}};
+  var FLOOR=6000, TOTAL=250;
+
+  function tiers(){
+    var key=document.querySelector('input[name=scn]:checked').value, sc=SCN[key];
+    document.getElementById('scnHint').textContent=sc.t+'. Minimum worth serving: $6,000 a year.';
+    var rows='',bars='',totRev=0,totMkt=0,totW=0,sam=0,samFirms=0,maxW=0,data=[];
+    TIERS.forEach(function(t){
+      var mkt=t.rev*sc.m, w=mkt*sc.s, tw=w*t.firms;
+      var fit=t.inhouse?['In-house BD, low adoption','warn']:(w<FLOOR?['Below $6k floor','redline']:['Target','good']);
+      totRev+=t.rev*t.firms; totMkt+=mkt*t.firms; totW+=tw;
+      if(fit[1]==='good'){sam+=tw;samFirms+=t.firms}
+      if(tw>maxW)maxW=tw;
+      data.push({t:t,tw:tw,fit:fit});
+      rows+='<tr><td>'+t.k+'<small>'+t.staff+'</small></td><td class="num">'+fmtN(t.firms)+'</td><td class="num">'+fmtM(t.rev)+'</td><td class="num">'+money(mkt)+'</td><td class="num">'+money(w)+'</td><td class="num">'+fmtM(tw)+'</td><td><span class="tag '+fit[1]+'">'+fit[0]+'</span></td></tr>';
+    });
+    rows+='<tr class="totalrow"><td>Total</td><td class="num">'+TOTAL+'</td><td class="num">'+fmtM(totRev/TOTAL)+'</td><td class="num">'+fmtM(totMkt/TOTAL)+'</td><td class="num">'+fmtM(totW/TOTAL)+'</td><td class="num">'+fmtM(totW)+'</td><td></td></tr>';
+    document.getElementById('tierRows').innerHTML=rows;
+    data.forEach(function(d){
+      var pct=maxW?Math.max(1,d.tw/maxW*100):0, off=d.fit[1]!=='good';
+      bars+='<div class="bar-row"><span class="k">'+d.t.k.split(' ')[0]+'</span><div class="bar-track"><div class="bar-fill'+(off?' off':'')+'" style="width:'+pct.toFixed(1)+'%"></div></div><span class="v">'+fmtM(d.tw)+'</span></div>';
+    });
+    bars+='<div class="bars-cap">Annual agent wallet by tier. Dashed bars fall outside the target set.</div>';
+    document.getElementById('bars').innerHTML=bars;
+    document.getElementById('s3tiles').innerHTML=
+      '<div class="tile"><span class="n">'+fmtM(totRev)+'</span><span class="lbl">Estimated yearly revenue of about 250 firms</span><span class="tag warn">Assumption</span></div>'+
+      '<div class="tile"><span class="n">'+fmtM(totMkt)+'</span><span class="lbl">Yearly marketing and business development spend</span><span class="tag warn">Assumption</span></div>'+
+      '<div class="tile"><span class="n">'+fmtM(totW)+'</span><span class="lbl">Agent wallet, all tiers</span><span class="tag warn">Assumption</span></div>'+
+      '<div class="tile"><span class="n">'+fmtM(sam)+'</span><span class="lbl">Reachable wallet: '+fmtN(samFirms)+' target firms, large and below-floor tiers left out</span><span class="tag warn">Assumption</span></div>';
+  }
+  document.querySelectorAll('input[name=scn]').forEach(function(r){r.addEventListener('change',tiers)});
+  tiers();
+
+  var g=function(id){return document.getElementById(id)};
+  function calc(){
+    var rev=+g('cRev').value, mk=+g('cMkt').value/100, sh=+g('cShift').value/100,
+        job=Math.max(1,+g('cJob').value||0), mg=+g('cMargin').value/100, cl=+g('cClose').value/100;
+    g('cRevV').textContent=fmtM(rev);
+    g('cMktV').textContent=(mk*100).toFixed(1).replace(/\.0$/,'')+'%';
+    g('cShiftV').textContent=Math.round(sh*100)+'%';
+    g('cMarginV').textContent=Math.round(mg*100)+'%';
+    g('cCloseV').textContent=Math.round(cl*100)+'%';
+    var budget=rev*mk, agent=budget*sh, gp=job*mg, jobs=gp?agent/gp:0, meets=cl?jobs/cl:0;
+    g('oBudget').textContent=money(budget);
+    g('oAgent').textContent=money(agent);
+    g('oPerMo').textContent=money(agent/12)+' a month';
+    g('oGP').textContent=money(gp);
+    g('oJobs').textContent=jobs.toFixed(1);
+    g('oMeet').textContent=meets.toFixed(1);
+    var v=g('oVerdict');
+    if(agent<FLOOR){
+      v.textContent='At '+money(agent/12)+' a month this is below a viable service price. Raise the marketing share or the amount moved.';
+      v.style.cssText='border-color:var(--warn);background:var(--warn-tint);color:var(--warn)';
+    }else{
+      v.textContent='One extra job at a '+money(job)+' fee covers '+Math.min(100,Math.round(gp/agent*100))+'% of a year of the service'+(jobs<=1?'. It pays back on the first extra job.':'. It pays back after about '+Math.ceil(jobs)+' extra jobs.');
+      v.style.cssText='';
+    }
+  }
+  ['cRev','cMkt','cShift','cJob','cMargin','cClose'].forEach(function(id){g(id).addEventListener('input',calc)});
+  calc();
+})();
+</script>
+
+</body>
+</html>
