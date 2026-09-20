@@ -209,7 +209,7 @@
       <div class="tile"><span class="n">1,354</span><span class="lbl">Mechanical contractor bond holders. This is the state's HVAC contractor record.</span><span class="tag good">Verified</span></div>
       <div class="tile"><span class="n">2,638</span><span class="lbl">Distinct trade firms after removing overlap. 531 firms hold both plumbing and HVAC. Matched by exact name.</span><span class="tag good">Verified</span></div>
       <div class="tile"><span class="n">6,388</span><span class="lbl">Licensed residential building contractors. An upper bound: specialty trades and one-person firms hold this license too.</span><span class="tag warn">Needs filtering</span></div>
-      <div class="tile"><span class="n">None</span><span class="lbl">State list of commercial general contractors. Minnesota does not license them.</span><span class="tag redline">Gap</span></div>
+      <div class="tile"><span class="n">1,941</span><span class="lbl">Registered contractors with a construction-type name (Construction, Builders, Contracting) and no trade or residential license. Minnesota registers commercial contractors instead of licensing them. An upper bound for the GC pool.</span><span class="tag warn">Needs filtering</span></div>
       <div class="tile"><span class="n">~250</span><span class="lbl">Architecture and design firms. No public firm list exists.</span><span class="tag warn">Assumption</span></div>
       <div class="tile"><span class="n">0</span><span class="lbl">Email addresses in the metro business records of these four DLI files. Phone numbers are filled in for nearly every record.</span><span class="tag good">Verified</span></div>
     </div>
@@ -340,7 +340,7 @@
         <div class="when">Open<b>Not yet known</b></div>
         <div><ul>
           <li>Back-test of planning agendas: not complete. The Hastings meeting calendar refused automated access (HTTP 403). Agendas need to be read from city PDFs or by hand.</li>
-          <li>Size of the commercial GC pool: no state list. The Saint Paul permit proxy shows 171 active new-build contractors in one city.</li>
+          <li>Size of the active GC pool: the DLI registration file lists 9,954 metro contractors and has no work-type or size field. Only 29% of Saint Paul's 262 active new-build and addition contractors match a registration, and 50% match a residential license. Permit activity is the better filter.</li>
           <li>Revenue per firm for plumbing and HVAC: copied from electrical.</li>
           <li>Gate before promising anything: five qualified customers per role and two paid pilots.</li>
         </ul></div>
@@ -357,7 +357,7 @@
   </div>
 
   <div class="foot">
-    Sources: MN DLI license exports for Electrical, Plumbing, Mechanical Contractor Bond and Residential Contractors (2026-09-20) · Saint Paul Approved_Building_Permits, Jul 2024 to Jun 2025 · Citizen Portal summary of the Hastings Planning Commission item · AIA Firm Survey 2024 · industry marketing-spend and pricing guides.<br>
+    Sources: MN DLI license exports for Electrical, Plumbing, Mechanical Contractor Bond, Residential Contractors and Contractor Registrations (2026-09-20) · Saint Paul Approved_Building_Permits, Jul 2024 to Jun 2025 · Citizen Portal summary of the Hastings Planning Commission item · AIA Firm Survey 2024 · industry marketing-spend and pricing guides.<br>
     Related: Sightline AEC Track docs 05 and 05a, the Daley Electric field sheet, and the AEC design-firm sheet. AEC is not a chosen lane. This sheet is field research, not a decision.
   </div>
 </div>
